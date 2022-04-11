@@ -3,9 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,5 +67,11 @@ public class MySQLAdsDao implements Ads {
             ads.add(extractAd(rs));
         }
         return ads;
+    }
+
+    private void deleteAd(int adId) throws SQLException {
+        String query = "DELETE FROM ads WHERE id =?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setInt(1, adId);
     }
 }
