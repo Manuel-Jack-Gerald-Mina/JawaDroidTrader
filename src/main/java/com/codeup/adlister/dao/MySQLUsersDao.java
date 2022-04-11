@@ -1,10 +1,13 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MySQLUsersDao implements Users {
     private Connection connection;
@@ -13,9 +16,9 @@ public class MySQLUsersDao implements Users {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
-                config.getUrl(),
-                config.getUser(),
-                config.getPassword()
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
         } catch (SQLException e) {
             throw new RuntimeException("Error connecting to the database!", e);
@@ -23,6 +26,17 @@ public class MySQLUsersDao implements Users {
     }
 
 
+    @Override
+    public List<User> all() {
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM users");
+            ResultSet rs = stmt.executeQuery();
+            return createUsersFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
     @Override
     public User findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
@@ -60,11 +74,17 @@ public class MySQLUsersDao implements Users {
             return null;
         }
         return new User(
-            rs.getLong("id"),
-            rs.getString("username"),
-            rs.getString("email"),
-            rs.getString("password")
+                rs.getLong("id"),
+                rs.getString("username"),
+                rs.getString("email"),
+                rs.getString("password")
         );
     }
-
+    private List<User> createUsersFromResults(ResultSet rs) throws SQLException {
+        List<User> users = new ArrayList<>();
+        while (rs.next()) {
+            users.add(extractUser(rs));
+        }
+        return users;
+    }
 }
