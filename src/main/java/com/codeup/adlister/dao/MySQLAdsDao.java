@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -53,12 +54,15 @@ public class MySQLAdsDao implements Ads {
     }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
-        return new Ad(
-                rs.getLong("id"),
-                rs.getLong("user_id"),
-                rs.getString("title"),
-                rs.getString("description")
-        );
+        if (rs.next()) {
+            return new Ad(
+                    rs.getLong("id"),
+                    rs.getLong("user_id"),
+                    rs.getString("title"),
+                    rs.getString("description")
+            );
+        }
+        return null;
     }
 
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
@@ -69,9 +73,29 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
-    private void deleteAd(int adId) throws SQLException {
+    public Long deleteAd(Ad ad) {
         String query = "DELETE FROM ads WHERE id =?";
-        PreparedStatement stmt = connection.prepareStatement(query);
-        stmt.setInt(1, adId);
+        try {
+        PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+        stmt.setLong(1,ad.getId());
+        stmt.executeUpdate();
+        ResultSet rs = stmt.getGeneratedKeys();
+        rs.next();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting user",e);
+        }
+        return ad.getId();
+    }
+
+    @Override
+    public Ad findByAdId(Long adId) {
+        String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            return extractAd(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by username", e);
+        }
     }
 }
