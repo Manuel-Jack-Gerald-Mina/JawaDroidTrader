@@ -6,8 +6,9 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
     id           INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    username      VARCHAR(50) NOT NULL,
-    password         VARCHAR(255) NOT NULL,
+    username     VARCHAR(50) NOT NULL,
+    password     VARCHAR(255) NOT NULL,
+    email        VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -21,18 +22,18 @@ CREATE TABLE ads
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 
-INSERT INTO users (id, username, password)
-VALUES (1, 'adlister', 'codeup'),
-       (2, 'jawa', 'codeup'),
-       (3, 'mina', 'codeup'),
-       (4, 'jack', 'codeup'),
-       (5, 'geraldo', 'codeup'),
-       (6, 'alex', 'codeup'),
-       (7, 'cosmo', 'codeup'),
-       (8, 'orangeBanana', 'codeup'),
-       (9, 'PotatoPeeler', 'codeup'),
-       (10, 'BlackLagoon', 'codeup'),
-       (11, 'TwitterUser1', 'codeup');
+INSERT INTO users (id, username, password, email)
+VALUES (1, 'adlister', 'codeup', 'adlister@example.com'),
+       (2, 'jawa', 'codeup', 'jawa@example.com'),
+       (3, 'mina', 'codeup', 'mina@example.com'),
+       (4, 'jack', 'codeup', 'jack@example.com'),
+       (5, 'geraldo', 'codeup', 'geraldo@example.com'),
+       (6, 'alex', 'codeup', 'alex@example.com'),
+       (7, 'cosmo', 'codeup', 'cosmo@example.com'),
+       (8, 'orangeBanana', 'codeup', 'orangeBanana@example.com'),
+       (9, 'PotatoPeeler', 'codeup', 'PotatoPeeler@example.com'),
+       (10, 'BlackLagoon', 'codeup', 'BlackLagoon@example.com'),
+       (11, 'TwitterUser1', 'codeup', 'TwitterUser1@example.com');
 
 
 INSERT INTO ads (id, user_id, title, description)
