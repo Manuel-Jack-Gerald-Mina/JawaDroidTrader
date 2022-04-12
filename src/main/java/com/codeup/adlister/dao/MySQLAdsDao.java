@@ -1,7 +1,6 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -72,6 +71,19 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+    public Ad updateAd(Ad editAd){
+        String query = "UPDATE ads SET title= ?,description = ? WHERE id = ? ";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1,editAd.getTitle());
+            stmt.setString(2,editAd.getDescription());
+            stmt.setLong(3,editAd.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error editing user", e);
+        }
+        return editAd;
+    }
 
     public Long deleteAd(Ad ad) {
         String query = "DELETE FROM ads WHERE id =?";
@@ -82,7 +94,7 @@ public class MySQLAdsDao implements Ads {
         ResultSet rs = stmt.getGeneratedKeys();
         rs.next();
         } catch (SQLException e) {
-            throw new RuntimeException("Error deleting user",e);
+            throw new RuntimeException("Error deleting ad",e);
         }
         return ad.getId();
     }
@@ -98,4 +110,6 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error finding a user by username", e);
         }
     }
+
+
 }

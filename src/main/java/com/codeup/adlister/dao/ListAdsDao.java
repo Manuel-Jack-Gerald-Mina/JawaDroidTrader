@@ -26,6 +26,9 @@ public class ListAdsDao implements Ads {
         ads.add(ad);
         return ad.getId();
     }
+    public Ad updateAd(){
+     return null;
+    }
 
     @Override
     public Long deleteAd(Ad ad) {
@@ -34,6 +37,11 @@ public class ListAdsDao implements Ads {
 
     @Override
     public Ad findByAdId(Long adId) {
+        return null;
+    }
+
+    @Override
+    public Ad updateAd(Ad ad) {
         return null;
     }
 
