@@ -1,10 +1,8 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -87,32 +85,5 @@ public class MySQLUsersDao implements Users {
             users.add(extractUser(rs));
         }
         return users;
-    }
-    public Long updatePassword(User user, String password, Long id) {
-        String query = "UPDATE users SET password = ? WHERE id = ?";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, user.getPassword());
-            stmt.setLong(2, user.getId());
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error updating a user", e);
-        }
-        return user.getId();
-    }
-    public Long updatePassword(User user, String password ) {
-        String query = "UPDATE users SET password = ? WHERE id = ?";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, user.getPassword());
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error updating a user", e);
-        }
-        return user.getId();
     }
 }

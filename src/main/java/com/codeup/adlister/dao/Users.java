@@ -8,4 +8,5 @@ public interface Users {
     List<User> all();
     User findByUsername(String username);
     Long insert(User user);
+
 }
