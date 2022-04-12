@@ -19,6 +19,8 @@ public class AdInfoServlet extends HttpServlet {
         String adInfo = request.getParameter("id");
         Long adId= parseLong(adInfo);
 
+//        String ad_user = request.getParameter("ad")
+
         Ad currentAd = DaoFactory.getAdsDao().findByAdId(adId);
         request.setAttribute("selectedAd", currentAd);
         request.getRequestDispatcher("/WEB-INF/ads/adInfo.jsp").forward(request,response);
