@@ -4,7 +4,7 @@ import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
 import org.mindrot.jbcrypt.BCrypt;
-
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
         if (user == null) {
+
             response.sendRedirect("/login");
             return;
         }
@@ -42,8 +43,16 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
         } else {
+//            PrintWriter script = response.getWriter();
+//            script.println("<script>");
+//            script.println("alert('You have the wrong user_ID or password')");
+//            script.println("history.back()"); // going back to prior page ,-->login page
+//            script.println("</script>");
             response.sendRedirect("/login");
         }
+
+
+
 
     }
 
