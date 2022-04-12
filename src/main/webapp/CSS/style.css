@@ -1,4 +1,8 @@
 body{
 background-image: url("/asset/Simplistic-Tatooine.jpg");
     background-position: center;
+    background-size: cover;
+}
+h1{
+
 }
