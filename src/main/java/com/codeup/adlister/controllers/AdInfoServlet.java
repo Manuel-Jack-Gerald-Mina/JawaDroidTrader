@@ -12,8 +12,8 @@ import java.io.IOException;
 
 import static java.lang.Long.parseLong;
 
-@WebServlet(name = "AdinfoServlet", urlPatterns = "/adsInfo")
-public class AdInfoServelet extends HttpServlet {
+@WebServlet(name = "controllers.AdInfoServlet", urlPatterns = "/adsInfo")
+public class AdInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String adInfo = request.getParameter("id");
