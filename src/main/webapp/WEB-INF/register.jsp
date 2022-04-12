@@ -5,14 +5,14 @@
     <jsp:include page="partials/head.jsp">
         <jsp:param name="title" value="Register For Our Site!" />
     </jsp:include>
-    <link href="/asset/jawa.png" rel="icon" type="image/x-icon" />
+    <link href="asset/jawa.png" rel="icon" type="image/x-icon" />
     <%--    bootstrap --%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
 </head>
 <body>
     <jsp:include page="partials/resgister_navbar.jsp" />
-    <div class="container">
+    <div class="container>
         <h1>Please fill in your information.</h1>
         <form action="/register" method="post">
             <div class="form-group">
