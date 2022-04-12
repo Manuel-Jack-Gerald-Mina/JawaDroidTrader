@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/login_navbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
     <div class="container-large m-auto text-center">
         <h1>Jawa Droids Trading</h1>
     </div>
