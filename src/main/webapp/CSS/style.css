@@ -1,9 +1,17 @@
 body{
 background-image: url("/asset/Simplistic-Tatooine.jpg");
     background-position: center;
+
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .profile-card{
     border : 2px solid darkgoldenrod;
+}
+
+
+#card2{
+    background-color: darkgoldenrod;
+
 }
