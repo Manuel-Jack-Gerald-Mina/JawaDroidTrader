@@ -33,7 +33,7 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${sessionScope.user.email}</li>
-                <li class="list-group-item"><a href="#" class="card-link">//change password//</a></li>
+                <li class="list-group-item"><a href="changePassword.jsp" class="card-link">//change password//</a></li>
 
             </ul>
             <div class="card-body">
