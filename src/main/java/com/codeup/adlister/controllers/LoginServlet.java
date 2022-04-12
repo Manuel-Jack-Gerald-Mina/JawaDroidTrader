@@ -15,6 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        boolean Attempt= false;
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
@@ -42,6 +43,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
+            goGPost attempt =true;
         }
 
     }
