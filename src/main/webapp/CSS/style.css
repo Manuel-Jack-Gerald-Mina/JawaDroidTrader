@@ -2,3 +2,6 @@ body{
 background-image: url("/asset/Simplistic-Tatooine.jpg");
     background-position: center;
 }
+#card2{
+    background-color: darkgoldenrod;
+}
