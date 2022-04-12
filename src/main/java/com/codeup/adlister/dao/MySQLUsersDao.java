@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -53,7 +54,7 @@ public class MySQLUsersDao implements Users {
     public Long insert(User user) {
 
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
-        String hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        String hash = Password.hash(user.getPassword());
         try {
 
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
