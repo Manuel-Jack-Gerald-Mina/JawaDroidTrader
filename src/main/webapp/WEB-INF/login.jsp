@@ -10,8 +10,8 @@
 
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/login_navbar.jsp" />
-<%--    <jsp:include page="/WEB-INF/partials/login_navbar.jsp" />--%>
+    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
     <div class="container">
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
