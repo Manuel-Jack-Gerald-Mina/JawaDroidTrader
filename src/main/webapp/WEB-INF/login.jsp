@@ -6,7 +6,7 @@
     </jsp:include>
 <%--    bootstrap --%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link href="asset/jawa.png" rel="icon" type="image/x-icon" />
+    <link href="../asset/jawa.png" rel="icon" type="image/x-icon" />
 
 </head>
 <body>
@@ -14,7 +14,7 @@
 <%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
     <div class="container">
         <h1>Please Log In</h1>
-        <form action="/login" method="POST">
+        <form action="login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
