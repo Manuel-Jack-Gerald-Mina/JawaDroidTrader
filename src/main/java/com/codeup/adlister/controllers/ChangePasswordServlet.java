@@ -31,8 +31,10 @@ public class ChangePasswordServlet extends HttpServlet {
 
         // validate input
         boolean inputHasErrors = password.isEmpty()
-                || (! password.equals(passwordConfirmation))
+                || (! newPassword.equals(passwordConfirmation))
                 || newPassword.isEmpty()
+                || password.equals(newPassword)
+                || passwordConfirmation.equals(" ")
                 ;
 
         if (inputHasErrors) {
@@ -42,9 +44,10 @@ public class ChangePasswordServlet extends HttpServlet {
         }
         String hash = Password.hash(newPassword);
 
-        User newList = new User(username,hash);
-        DaoFactory.getUsersDao().updatePassword(newList);
+        User editedPassword = new User(username,hash);
+
+        DaoFactory.getUsersDao().updatePassword(editedPassword);
         request.getSession().setAttribute("user", DaoFactory.getUsersDao().findByUsername(username));
-//        response.sendRedirect("/login");
+        response.sendRedirect("/login");
     }
 }
