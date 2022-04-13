@@ -14,7 +14,7 @@
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
- 
+
         <c:forEach var="ad" items="${ads}">
 
             <div class="row" >
@@ -25,7 +25,8 @@
             <div class="card-body align-content-center">
             <h4 class="card-title  ">${ad.title}</h4><br>
 
-               <h5>user: ${usersDao.findByUserId(ad.userId).getUsername()}</h5>
+              <h5>user: ${usersDao.findByUserId(ad.userId).getUsername()}</h5>
+
 <%--<c:param name="userid" value="${ad.userId}" />--%>
                     <%--<h5 class="card-title">${param.userbyid}</h5>--%>
 
@@ -40,7 +41,7 @@
 
 
         </c:forEach>
-                
+
 
 
 

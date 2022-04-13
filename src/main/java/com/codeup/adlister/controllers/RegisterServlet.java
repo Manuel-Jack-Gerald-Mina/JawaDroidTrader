@@ -36,9 +36,9 @@ public class RegisterServlet extends HttpServlet {
 //            return;
         }
         // create and save a new user
-//        String hash = BCrypt.hashpw(password, BCrypt.gensalt());
+        String hash = BCrypt.hashpw(password, BCrypt.gensalt());
 
-        User user = new User(username, email, password);
+        User user = new User(username, email, hash);
         DaoFactory.getUsersDao().insert(user);
         request.getSession().setAttribute("user", DaoFactory.getUsersDao().findByUsername(username));
         response.sendRedirect("/login");
