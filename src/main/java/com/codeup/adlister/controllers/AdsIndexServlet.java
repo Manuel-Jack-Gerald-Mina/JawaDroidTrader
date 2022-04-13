@@ -50,8 +50,8 @@ public class AdsIndexServlet extends HttpServlet {
         System.out.println("this should show up "+ userID);
         String delete= request.getParameter("delete");
         long id = parseLong(delete);
-        Ad ad= DaoFactory.getAdsDao().findByAdId(id);
-        DaoFactory.getAdsDao().deleteAd(ad);
+
+        DaoFactory.getAdsDao().deleteAd(id);
 
 
     }

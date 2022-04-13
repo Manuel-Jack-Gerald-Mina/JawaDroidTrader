@@ -31,7 +31,7 @@ public class ListAdsDao implements Ads {
     }
 
     @Override
-    public long deleteAd(Ad ad) {
+    public long deleteAd(long id) {
         return -1;
     }
 
