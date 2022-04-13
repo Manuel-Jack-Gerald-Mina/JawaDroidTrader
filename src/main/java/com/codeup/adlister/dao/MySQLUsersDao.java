@@ -27,9 +27,9 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public List<User> all() {
-        PreparedStatement stmt = null;
+
         try {
-            stmt = connection.prepareStatement("SELECT * FROM users");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users");
             ResultSet rs = stmt.executeQuery();
             return createUsersFromResults(rs);
         } catch (SQLException e) {
@@ -47,6 +47,8 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error finding a user by username", e);
         }
     }
+
+    @Override
     public User findByUserId(long id) {
         String query = "SELECT * FROM users WHERE id = ? LIMIT 1";
         try {
@@ -57,6 +59,7 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error finding a user by Id", e);
         }
     }
+
     @Override
     public Long insert(User user) {
 
@@ -78,9 +81,6 @@ public class MySQLUsersDao implements Users {
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
-            return null;
-        }
         return new User(
                 rs.getLong("id"),
                 rs.getString("username"),

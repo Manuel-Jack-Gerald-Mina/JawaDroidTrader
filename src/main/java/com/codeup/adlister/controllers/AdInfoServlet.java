@@ -17,7 +17,7 @@ public class AdInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String adInfo = request.getParameter("card-id");
-        Long adId= parseLong(adInfo);
+        long adId= parseLong(adInfo);
 
 //        String ad_user = request.getParameter("ad")
 
