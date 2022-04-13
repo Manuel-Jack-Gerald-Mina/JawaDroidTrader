@@ -27,9 +27,9 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public List<User> all() {
-        PreparedStatement stmt = null;
+
         try {
-            stmt = connection.prepareStatement("SELECT * FROM users");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users");
             ResultSet rs = stmt.executeQuery();
             return createUsersFromResults(rs);
         } catch (SQLException e) {

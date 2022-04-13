@@ -25,8 +25,8 @@
             <div class="card-body align-content-center">
             <h4 class="card-title  ">${ad.title}</h4><br>
 
-<c:param name="user" value="${ad.userId}" />
-                    <h5 class="card-title">${param.userbyid}</h5>
+<%--<c:param name="userid" value="${ad.userId}" />--%>
+                    <%--<h5 class="card-title">${param.userbyid}</h5>--%>
 
 
             <p class="card-text ">${ad.description}</p>
