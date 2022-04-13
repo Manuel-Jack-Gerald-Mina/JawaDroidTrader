@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+ String failedattempt;
         if (request.getSession().getAttribute("user") != null) {
             response.sendRedirect("/profile");
             return;
@@ -42,13 +42,14 @@ public class LoginServlet extends HttpServlet {
         if (validAttempt) {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
+
         } else {
 //            PrintWriter script = response.getWriter();
 //            script.println("<script>");
 //            script.println("alert('You have the wrong user_ID or password')");
 //            script.println("history.back()"); // going back to prior page ,-->login page
 //            script.println("</script>");
-            response.sendRedirect("/login");
+            response.sendRedirect("/login?failedattempt=true");
         }
 
 
