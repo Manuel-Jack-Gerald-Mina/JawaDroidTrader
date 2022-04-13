@@ -36,7 +36,7 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Long insert(Ad ad) {
+    public long insert(Ad ad) {
         try {
             String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
@@ -85,7 +85,21 @@ public class MySQLAdsDao implements Ads {
         return editAd;
     }
 
-    public Long deleteAd(Ad ad) {
+    @Override
+    public Ad findByUserID(long userId) {
+
+            String query = "SELECT * FROM ads WHERE user_id = ? LIMIT 1";
+            try {
+                PreparedStatement stmt = connection.prepareStatement(query);
+                stmt.setLong(1, userId);
+                return extractAd(stmt.executeQuery());
+            } catch (SQLException e) {
+                throw new RuntimeException("Error finding a ad by userId ", e);
+            }
+        }
+
+
+    public long deleteAd(Ad ad) {
         String query = "DELETE FROM ads WHERE id =?";
         try {
         PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
@@ -100,7 +114,7 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Ad findByAdId(Long adId) {
+    public Ad findByAdId(long adId) {
         String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
