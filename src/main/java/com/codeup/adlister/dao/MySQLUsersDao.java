@@ -93,13 +93,27 @@ public class MySQLUsersDao implements Users {
     private List<User> createUsersFromResults(ResultSet rs) throws SQLException {
         List<User> users = new ArrayList<>();
         while (rs.next()) {
-            new User(
+            users.add(new User(
                     rs.getLong("id"),
                     rs.getString("username"),
                     rs.getString("email"),
                     rs.getString("password")
-            );
+            ));
         }
         return users;
+    }
+    public String updatePassword(User user) {
+        String query = "UPDATE users SET password = ? WHERE username = ? ";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1,user.getPassword());
+            stmt.setString(2, user.getUsername());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating password",e);
+        }
+        return user.getPassword();
     }
 }

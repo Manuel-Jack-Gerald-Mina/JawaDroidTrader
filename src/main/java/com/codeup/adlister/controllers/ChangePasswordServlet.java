@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.ServletException;
@@ -30,17 +31,23 @@ public class ChangePasswordServlet extends HttpServlet {
 
         // validate input
         boolean inputHasErrors = password.isEmpty()
-                || (! password.equals(passwordConfirmation))
+                || (! newPassword.equals(passwordConfirmation))
                 || newPassword.isEmpty()
-                || passwordConfirmation.isEmpty();
+                || password.equals(newPassword)
+                || passwordConfirmation.equals(" ")
+                ;
 
         if (inputHasErrors) {
             request.setAttribute("inputHasErrors",true);
             request.getRequestDispatcher("/WEB-INF/changePassword.jsp").forward(request, response);
 
         }
-        System.out.println("new Password " + user.getPassword());
+        String hash = Password.hash(newPassword);
+
+        User editedPassword = new User(username,hash);
+
+        DaoFactory.getUsersDao().updatePassword(editedPassword);
         request.getSession().setAttribute("user", DaoFactory.getUsersDao().findByUsername(username));
-//        response.sendRedirect("/login");
+        response.sendRedirect("/login");
     }
 }
