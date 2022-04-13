@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLAdsDao implements Ads {
-    private Connection connection = null;
+    private Connection connection;
 
     public MySQLAdsDao(Config config) {
         try {
@@ -53,7 +53,7 @@ public class MySQLAdsDao implements Ads {
     }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
-
+            rs.next();
             return new Ad(
                     rs.getLong("id"),
                     rs.getLong("user_id"),
@@ -67,7 +67,12 @@ public class MySQLAdsDao implements Ads {
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
         while (rs.next()) {
-            ads.add(extractAd(rs));
+             new Ad(
+                    rs.getLong("id"),
+                    rs.getLong("user_id"),
+                    rs.getString("title"),
+                    rs.getString("description")
+            );
         }
         return ads;
     }
