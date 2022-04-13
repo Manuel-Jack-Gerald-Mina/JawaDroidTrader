@@ -16,8 +16,10 @@ import static java.lang.Long.parseLong;
 public class AdInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String adInfo = request.getParameter("id");
+        String adInfo = request.getParameter("card-id");
         Long adId= parseLong(adInfo);
+
+//        String ad_user = request.getParameter("ad")
 
         Ad currentAd = DaoFactory.getAdsDao().findByAdId(adId);
         request.setAttribute("selectedAd", currentAd);

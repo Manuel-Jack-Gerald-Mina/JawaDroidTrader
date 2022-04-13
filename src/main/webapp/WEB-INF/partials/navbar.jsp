@@ -8,7 +8,31 @@
             <a class="navbar-brand" href="../../index.jsp">Jawa Droids Trading co.</a>
         </div>
 
-        <form class="form-inline ">
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="search">Search by</label>
+                <select class="form-control" id="search">
+                    <option>Ad Id</option>
+                    <option>Title</option>
+                    <option>User</option>
+                    <option>Categories</option>
+                </select>
+                <div class="form-group">
+                    <label for="Searchbox"></label>
+                    <textarea class="form-control mr-sm-2" placeholder="search" id="Searchbox" rows="3"></textarea>
+                </div>
+            <%--<label for="Search"></label>
+            <select id="Search" name="search">
+                <option value="Ad Id">Ad Id</option>
+                <option value="Title">Title</option>
+                <option value="User">User</option>
+                <option value="Categories">Categories</option>
+            </select>--%>
+<%--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--%>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <%--<form class="form-inline ">
             <div class="dropdown ">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                     Search by...
@@ -20,7 +44,7 @@
             </div>
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form>--%>
 <c:choose>
         <c:when test="${sessionScope.user != null}">
         <ul class="nav navbar-nav navbar-right">

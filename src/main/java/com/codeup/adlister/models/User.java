@@ -20,6 +20,16 @@ public class User {
         this.email = email;
         this.password = password;
     }
+    //update password
+    public User(String username, String password) {
+        this.password = password;
+        this.username = username;
+    }
+
+    public User(String password) {
+        this.password = password;
+    }
+
 
     public long getId() {
         return id;
