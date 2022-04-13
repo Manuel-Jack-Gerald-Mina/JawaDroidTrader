@@ -20,34 +20,29 @@ public class ChangePasswordServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
-        String password = request.getParameter("currentPassword");
+        String currentPassword = request.getParameter("currentPassword");
         String newPassword = request.getParameter("newPassword");
         String passwordConfirmation = request.getParameter("confirmNewPassword");
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
         System.out.println("original " + user.getPassword());
-
-
-
-        // validate input
-        boolean inputHasErrors = password.isEmpty()
-                || (! newPassword.equals(passwordConfirmation))
-                || newPassword.isEmpty()
-                || password.equals(newPassword)
-                || passwordConfirmation.equals(" ")
-                ;
-
-        if (inputHasErrors) {
-            request.setAttribute("inputHasErrors",true);
-            request.getRequestDispatcher("/WEB-INF/changePassword.jsp").forward(request, response);
-
-        }
         String hash = Password.hash(newPassword);
 
-        User editedPassword = new User(username,hash);
+        // validate input
+        boolean inputHasErrors = currentPassword.equals(newPassword)
+                || (! newPassword.equals(passwordConfirmation))
+                || currentPassword.isEmpty()
+                || newPassword.isEmpty();
 
-        DaoFactory.getUsersDao().updatePassword(editedPassword);
-        request.getSession().setAttribute("user", DaoFactory.getUsersDao().findByUsername(username));
-        response.sendRedirect("/login");
+        if (inputHasErrors) {
+            request.getRequestDispatcher("/WEB-INF/changePassword.jsp").forward(request, response);
+
+        }else{
+            User editedPassword = new User(username,hash);
+
+            DaoFactory.getUsersDao().updatePassword(editedPassword);
+            request.getSession().setAttribute("user", DaoFactory.getUsersDao().findByUsername(username));
+            response.sendRedirect("/login");
+        }
     }
 }

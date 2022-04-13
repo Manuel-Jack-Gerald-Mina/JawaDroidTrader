@@ -33,9 +33,10 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         String hash = Password.hash(password);
-//        System.out.println("original = " + user.getPassword());
-//        System.out.println("password entered: " + password);
-//        System.out.println("hash = " + hash);
+
+        System.out.println("original = " + user.getPassword());
+        System.out.println("password entered: " + password);
+        System.out.println("hash = " + hash);
 
         boolean validAttempt = Password.check(password, hash);
 
