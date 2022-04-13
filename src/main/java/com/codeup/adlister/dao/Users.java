@@ -9,7 +9,7 @@ public interface Users {
     User findByUsername(String username);
     User findByUserId(long id);
     Long insert(User user);
-
+    String updatePassword(User password);
 
 
 }
