@@ -15,7 +15,7 @@ public class ListAdsDao implements Ads {
         return ads;
     }
 
-    public Long insert(Ad ad) {
+    public long insert(Ad ad) {
         // make sure we have ads
         if (ads == null) {
             ads = generateAds();
@@ -31,17 +31,22 @@ public class ListAdsDao implements Ads {
     }
 
     @Override
-    public Long deleteAd(Ad ad) {
-        return null;
+    public long deleteAd(Ad ad) {
+        return -1;
     }
 
     @Override
-    public Ad findByAdId(Long adId) {
+    public Ad findByAdId(long adId) {
         return null;
     }
 
     @Override
     public Ad updateAd(Ad ad) {
+        return null;
+    }
+
+    @Override
+    public Ad findByUserID(long userId) {
         return null;
     }
 

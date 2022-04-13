@@ -6,6 +6,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+    <link href="../asset/jawa_facial.png" rel="icon" type="image/x-icon" />
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />

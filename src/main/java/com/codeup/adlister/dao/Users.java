@@ -10,4 +10,6 @@ public interface Users {
     User findByUserId(long id);
     Long insert(User user);
 
+
+
 }
