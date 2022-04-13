@@ -25,7 +25,7 @@
             </div>
             <ul>
                 <li><h5>${ad.Price}</h5></li>
-                <li> <p id="ad_user"><a href="../viewerProfile.jsp">${ad.user}</a></p></li>
+                <li> <p id="ad_user"><a href="adlisterProfile?user=${usersDao.findByUserId(ad.userId).getUsername()}">${usersDao.findByUserId(ad.userId).getUsername()}</a></p></li>
                 <li> <p class="card-text">${ad.Details}</p></li>
             </ul>
         </div>
