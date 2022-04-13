@@ -52,6 +52,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+
     private Ad extractAd(ResultSet rs) throws SQLException {
             rs.next();
             return new Ad(
@@ -104,16 +105,14 @@ public class MySQLAdsDao implements Ads {
         }
 
 
-    public long deleteAd(Ad ad) {
-        String queryBefore=  "SET FOREIGN_KEY_CHECKS=0";
-        String query = "DELETE FROM ads WHERE id =?";
-        String queryAfter ="SET FOREIGN_KEY_CHECKS=1";
+    public long deleteAd(long id) {
 
-        String queryAll = queryBefore + query;
+        String query = "DELETE FROM ads WHERE id =?";
+
         try {
 
-        PreparedStatement stmt = connection.prepareStatement(queryAll,Statement.RETURN_GENERATED_KEYS);
-        stmt.setLong(1,ad.getId());
+        PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+        stmt.setLong(1,id);
         stmt.executeUpdate();
         ResultSet rs = stmt.getGeneratedKeys();
         rs.next();
@@ -124,7 +123,7 @@ public class MySQLAdsDao implements Ads {
 
         }
 
-        return ad.getId();
+        return id;
     }
 
     @Override

@@ -25,6 +25,7 @@ CREATE TABLE ads
     description  VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users (id)
+ON DELETE CASCADE
 );
 
 CREATE table categories
@@ -38,8 +39,10 @@ CREATE table categories
 CREATE TABLE ads_categories (
     ads_id INT UNSIGNED NOT NULL,
     category_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (ads_id) REFERENCES ads(id),
+    FOREIGN KEY (ads_id) REFERENCES ads(id)
+    ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES categories(id)
+    ON DELETE CASCADE
 );
 
 
