@@ -93,12 +93,12 @@ public class MySQLUsersDao implements Users {
     private List<User> createUsersFromResults(ResultSet rs) throws SQLException {
         List<User> users = new ArrayList<>();
         while (rs.next()) {
-            new User(
+            users.add(new User(
                     rs.getLong("id"),
                     rs.getString("username"),
                     rs.getString("email"),
                     rs.getString("password")
-            );
+            ));
         }
         return users;
     }
