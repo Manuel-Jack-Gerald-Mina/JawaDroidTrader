@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.Long;
 
+import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
@@ -25,7 +27,7 @@ public class AdsIndexServlet extends HttpServlet {
             request.setAttribute("users", DaoFactory.getUsersDao().all());
         } else {*/
         String userID = request.getParameter("userid");
-        long id = parseLong(userID);
+       int id = parseInt(userID);
         request.setAttribute("user_name", DaoFactory.getUsersDao().findByUserId(id));
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
             request.setAttribute("user", DaoFactory.getUsersDao().all());
@@ -33,4 +35,5 @@ public class AdsIndexServlet extends HttpServlet {
             //}
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
-}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    }}

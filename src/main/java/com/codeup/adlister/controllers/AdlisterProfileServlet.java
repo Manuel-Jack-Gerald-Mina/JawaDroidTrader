@@ -25,6 +25,9 @@ public class AdlisterProfileServlet extends HttpServlet {
 //        String sql = "SELECT title FROM ads JOIN user ON ads.user_id = users.id WHERE users.id = ? ";
 //       // PreparedStatement statement = connection.prepareStatement(sql);
 //        User user = DaoFactory.getUsersDao().findByUserId(userID);
+
+
+
         String id = request.getParameter("profileId");
         long userID = parseLong(id);
         Ad ads = DaoFactory.getAdsDao().findByUserID(userID);
