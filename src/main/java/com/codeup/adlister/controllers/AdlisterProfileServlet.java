@@ -17,6 +17,7 @@ import static java.lang.Long.parseLong;
 @WebServlet(name = "controllers.AdlisterProfileServlet", urlPatterns = "/adlisterProfile")
 public class AdlisterProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
         // grab an user ID, go thru dao with same userid , filter it , user forEAch , render it into
         //.listOFAD  + button to go to the ads //
 
