@@ -8,7 +8,7 @@
             <a class="navbar-brand" href="../../index.jsp">Jawa Droids Trading co.</a>
         </div>
 
-        <form action="ads/search" method="post">
+        <form action="ads" method="get">
             <div class="form-group">
                 <label for="search">Search by</label>
                 <select class="form-control" name="searchType" id="search">
