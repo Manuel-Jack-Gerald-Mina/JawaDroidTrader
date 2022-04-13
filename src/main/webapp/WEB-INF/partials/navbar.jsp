@@ -8,27 +8,18 @@
             <a class="navbar-brand" href="../../index.jsp">Jawa Droids Trading co.</a>
         </div>
 
-        <form action="" method="post">
+        <form action="ads/search" method="post">
             <div class="form-group">
                 <label for="search">Search by</label>
-                <select class="form-control" id="search">
-                    <option>Ad Id</option>
-                    <option>Title</option>
-                    <option>User</option>
-                    <option>Categories</option>
+                <select class="form-control" name="searchType" id="search">
+                    <option  value="AdId">Ad Id</option>
+                    <option  value="AdTitle">Title</option>
+                    <option  value="Username">User</option>
+                    <option  value="Category">Categories</option>
                 </select>
-                <div class="form-group">
-                    <label for="Searchbox"></label>
-                    <textarea class="form-control mr-sm-2" placeholder="search" id="Searchbox" rows="3"></textarea>
+
+                    <textarea class="form-control mr-sm-2" name="search" placeholder="search" id="Search_box" rows="1"></textarea>
                 </div>
-            <%--<label for="Search"></label>
-            <select id="Search" name="search">
-                <option value="Ad Id">Ad Id</option>
-                <option value="Title">Title</option>
-                <option value="User">User</option>
-                <option value="Categories">Categories</option>
-            </select>--%>
-<%--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">--%>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 
