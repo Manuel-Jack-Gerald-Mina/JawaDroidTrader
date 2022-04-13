@@ -20,7 +20,7 @@
     <div class="container">
         <h1>Please Log In</h1>
 
-            <c:if test="${failedattempt !=null}">
+            <c:if test="${failed == '1'}">
         <div> incorrect username or password</div>
             </c:if>
         <form action="login" method="POST">
