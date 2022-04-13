@@ -1,6 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
@@ -47,5 +48,11 @@ public class AdsIndexServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String userID = request.getParameter("userid");
         System.out.println("this should show up "+ userID);
+        String delete= request.getParameter("delete");
+        long id = parseLong(delete);
+        Ad ad= DaoFactory.getAdsDao().findByAdId(id);
+        DaoFactory.getAdsDao().deleteAd(ad);
+
+
     }
 }

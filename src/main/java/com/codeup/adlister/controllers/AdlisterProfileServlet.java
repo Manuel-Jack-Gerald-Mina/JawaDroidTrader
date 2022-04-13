@@ -29,6 +29,7 @@ public class AdlisterProfileServlet extends HttpServlet {
         String id = request.getParameter("profileId");
         long userID = parseLong(id);
         Ad ads = DaoFactory.getAdsDao().findByUserID(userID);
+        request.getSession().getAttribute("user");
 
         request.setAttribute("ads",ads);
         request.getRequestDispatcher("/adlisterProfile.jsp").forward(request, response);
@@ -36,6 +37,7 @@ public class AdlisterProfileServlet extends HttpServlet {
 
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+
         request.getRequestDispatcher("/adsInfo.jsp").forward(request, response);
     }
 }

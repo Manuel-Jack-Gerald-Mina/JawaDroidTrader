@@ -105,16 +105,25 @@ public class MySQLAdsDao implements Ads {
 
 
     public long deleteAd(Ad ad) {
+        String queryBefore=  "SET FOREIGN_KEY_CHECKS=0";
         String query = "DELETE FROM ads WHERE id =?";
+        String queryAfter ="SET FOREIGN_KEY_CHECKS=1";
+
+        String queryAll = queryBefore + query;
         try {
-        PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+
+        PreparedStatement stmt = connection.prepareStatement(queryAll,Statement.RETURN_GENERATED_KEYS);
         stmt.setLong(1,ad.getId());
         stmt.executeUpdate();
         ResultSet rs = stmt.getGeneratedKeys();
         rs.next();
+
         } catch (SQLException e) {
+
             throw new RuntimeException("Error deleting ad",e);
+
         }
+
         return ad.getId();
     }
 
