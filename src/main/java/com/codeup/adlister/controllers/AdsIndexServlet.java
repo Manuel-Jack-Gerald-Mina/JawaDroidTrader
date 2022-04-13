@@ -1,6 +1,7 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import java.lang.Long;
 
 import static java.lang.Long.parseLong;
 
@@ -24,13 +27,25 @@ public class AdsIndexServlet extends HttpServlet {
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
             request.setAttribute("users", DaoFactory.getUsersDao().all());
         } else {*/
-        String userID = request.getParameter("userid");
-        long id = parseLong(userID);
-        request.setAttribute("user_name", DaoFactory.getUsersDao().findByUserId(id));
-            request.setAttribute("ads", DaoFactory.getAdsDao().all());
-            request.setAttribute("user", DaoFactory.getUsersDao().all());
+
+        request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        request.setAttribute("user", DaoFactory.getUsersDao().all());
+        request.setAttribute("usersDao",DaoFactory.getUsersDao());
+        /* String userID = request.getParameter("ad.userId");
+//        long id =Long.parseLong(userID);
+//        String UsernameID = DaoFactory.getUsersDao().findByUserId(id).getUsername();
+        request.setAttribute("user_name", userID);*/
+
+
+
             /*request.setAttribute("userbyid", DaoFactory.getUsersDao().findByUserId(userid));*/
             //}
+
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String userID = request.getParameter("userid");
+        System.out.println("this should show up "+ userID);
     }
 }
