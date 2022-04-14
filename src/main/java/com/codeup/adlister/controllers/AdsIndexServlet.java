@@ -52,6 +52,7 @@ public class AdsIndexServlet extends HttpServlet {
         long id = parseLong(delete);
 
         DaoFactory.getAdsDao().deleteAd(id);
+        response.sendRedirect("/ads");
 
 
     }
