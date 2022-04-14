@@ -23,8 +23,10 @@ CREATE TABLE ads
     user_id       INT UNSIGNED NOT NULL DEFAULT 0,
     title         VARCHAR(50) NOT NULL DEFAULT '',
     description  VARCHAR(255) NOT NULL DEFAULT '',
+    price DOUBLE NOT NULL ,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users (id)
+ON DELETE CASCADE
 );
 
 CREATE table categories
@@ -38,8 +40,10 @@ CREATE table categories
 CREATE TABLE ads_categories (
     ads_id INT UNSIGNED NOT NULL,
     category_id INT UNSIGNED NOT NULL,
-    FOREIGN KEY (ads_id) REFERENCES ads(id),
+    FOREIGN KEY (ads_id) REFERENCES ads(id)
+    ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES categories(id)
+    ON DELETE CASCADE
 );
 
 
@@ -57,18 +61,18 @@ VALUES (1, 'adlister', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89
        (11, 'TwitterUser1', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'TwitterUser1@example.com');
 
 
-INSERT INTO ads (id, user_id, title, description)
-VALUES (1, 2, 'Leftover Droidikas', 'Looking to trade some droidika and droidika parts from a cave. serious trades only'),
-       (2, 1, 'Blaster rifles', 'Sleeping stromtroopers "lost" their blasters. equal value or greater, I know what I have'),
-       (3, 2, 'C3PO unit along a R2D2 unit', 'as title. Restraining bolt already attached'),
-       (4, 2, 'Mandolorian armor for sale', 'seems in good condition. looking for an egg'),
-       (5, 3, 'Weapons for trade', 'looking to trade a few tusken Cycler rifles and Gaderffii. '),
-       (6, 2, 'droid for sale!', 'looking to trade a small ball-shaped droid.serious inquires only'),
-       (7, 4, 'Lightsabers!', 'selling Lightsabers. cannot guarantee they work. no refunds'),
-       (8, 6, 'selling Banthas', 'no room for them, looking to see what i can get for this herd'),
-       (9, 7, 'Razorcrest and parts', 'Razorcrest and few parts. reassembly costs extra'),
-       (10, 8, 'help?', ' not an ad. but has any other Jawa left Tatooine? is it worth the trouble?'),
-       (11, 9, 'Teaching young Jawas', 'looking for locations of items of value to help teach new jawas to scrap');
+INSERT INTO ads (id, user_id, title, description, price)
+VALUES (1, 2, 'Leftover Droidikas', 'Looking to trade some droidika and droidika parts from a cave. serious trades only',54.1),
+       (2, 1, 'Blaster rifles', 'Sleeping stromtroopers "lost" their blasters. equal value or greater, I know what I have',33391),
+       (3, 2, 'C3PO unit along a R2D2 unit', 'as title. Restraining bolt already attached',5464),
+       (4, 2, 'Mandolorian armor for sale', 'seems in good condition. looking for an egg',563.2),
+       (5, 3, 'Weapons for trade', 'looking to trade a few tusken Cycler rifles and Gaderffii. ',352.3),
+       (6, 2, 'droid for sale!', 'looking to trade a small ball-shaped droid.serious inquires only',434),
+       (7, 4, 'Lightsabers!', 'selling Lightsabers. cannot guarantee they work. no refunds',2323),
+       (8, 6, 'selling Banthas', 'no room for them, looking to see what i can get for this herd',34353),
+       (9, 7, 'Razorcrest and parts', 'Razorcrest and few parts. reassembly costs extra',6464),
+       (10, 8, 'help?', ' not an ad. but has any other Jawa left Tatooine? is it worth the trouble?',46464),
+       (11, 9, 'Teaching young Jawas', 'looking for locations of items of value to help teach new jawas to scrap',56575);
 
 
 INSERT INTO categories (id, category)

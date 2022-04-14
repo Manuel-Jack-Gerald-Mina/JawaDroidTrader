@@ -31,7 +31,9 @@
 //    }
 //
 //    @Override
-//    public long deleteAd(Ad ad) {
+
+//    public long deleteAd(long id) {
+
 //        return -1;
 //    }
 //

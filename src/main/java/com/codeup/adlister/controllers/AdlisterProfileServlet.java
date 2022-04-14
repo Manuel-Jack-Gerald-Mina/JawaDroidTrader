@@ -21,7 +21,9 @@ public class AdlisterProfileServlet extends HttpServlet {
 
 
 
+
 long userId = Long.parseLong(request.getParameter("user")); //bring in value from query string
+
 
         System.out.println("userId = " + userId);
 
@@ -40,6 +42,7 @@ long userId = Long.parseLong(request.getParameter("user")); //bring in value fro
 
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
+
         request.getRequestDispatcher("/adsInfo.jsp").forward(request, response);
     }
 }

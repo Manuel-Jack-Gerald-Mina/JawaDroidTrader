@@ -14,11 +14,11 @@
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
+    <div class="row" >
 
         <c:forEach var="ad" items="${ads}">
 
-            <div class="row" >
-            <div class="col-md">
+            <div class="col-3 m-2">
             <div class=" card   align-content-center" id ="card2"  style="width: 18rem; ">
 
             <img class=" card-img-top" src="../../asset/droid.jpeg" alt="Card image cap">
@@ -31,19 +31,27 @@
                     <%--<h5 class="card-title">${param.userbyid}</h5>--%>
 
 
-            <p class="card-text ">${ad.description}</p>
-            <a href="#" class="btn btn-dark text-warning rounded"> View this droid</a>
+            <p class="card-text ">${ad.price}</p>
+            <a href="/adsInfo?adId=${ad.id}" class="btn btn-dark text-warning rounded"> View this droid</a>
+             <c:if test="${sessionScope.user.id == ad.userId}">
+                 <form method="post">
+                 <button type="submit" name="delete" id="delete" value="${ad.id}">Delete</button>
+                 </form>
+                 <form>
+                 <button  name="edit">Edit</button>
+                 </form>
+             </c:if>
             </div>
             </div>
             </div>
-            </div>
+
 
 
 
         </c:forEach>
+    </div>
 
 
-
-
+</div>
 </body>
 </html>

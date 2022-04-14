@@ -33,12 +33,12 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${sessionScope.user.email}</li>
-                <li class="list-group-item"><a href="changePassword.jsp" class="card-link">//change password//</a></li>
+                <li class="list-group-item"><a href="/changePassword" class="card-link">//change password//</a></li>
 
             </ul>
             <div class="card-body">
-                <a href="ads/create.jsp" class="card-link">Create Ad</a>
-                <a href="ads/index.jsp" class="card-link">Go to Ads Page</a>
+                <a href="ads/create" class="card-link">Create Ad</a>
+                <a href="/ads" class="card-link">Go to Ads Page</a>
             </div>
         </div>
     </div>

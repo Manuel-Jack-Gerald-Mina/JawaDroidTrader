@@ -5,6 +5,7 @@
   Time: 2:07 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,7 +23,29 @@
 <div class="container">
 
     <h1>Enter your new password.</h1>
+
     <form action="/changePassword" method="post">
+        <c:choose>
+            <c:when test="${failed == '1'}">
+                <div>New password cannot match old password.</div>
+            </c:when>
+            <c:when test="${failed == '2'}">
+               <div>Confirm Password does not match.</div>
+            </c:when>
+            <c:when test="${failed == '3'}">
+                <div>Current Password field is blank.</div>
+            </c:when>
+            <c:when test="${failed == '4'}">
+                <div>New Password field is blank.</div>
+            </c:when>
+            <c:when test="${failed == '5'}">
+                <div>Cant use old password.</div>
+            </c:when>
+            <c:when test="${failed == '6'}">
+                <div>Username is empty.</div>
+            </c:when>
+        </c:choose>
+
         <div class="form-group">
             <label for="username">Username</label>
             <input id="username" name="username" class="form-control" type="text">
