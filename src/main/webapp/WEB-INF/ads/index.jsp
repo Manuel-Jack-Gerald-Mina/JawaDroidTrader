@@ -31,8 +31,8 @@
                     <%--<h5 class="card-title">${param.userbyid}</h5>--%>
 
 
-            <p class="card-text ">${ad.description}</p>
-            <a href="#" class="btn btn-dark text-warning rounded"> View this droid</a>
+            <p class="card-text ">${ad.price}</p>
+            <a href="/adsInfo?adId=${ad.id}" class="btn btn-dark text-warning rounded"> View this droid</a>
              <c:if test="${sessionScope.user.id == ad.userId}">
                  <form method="post">
                  <button type="submit" name="delete" id="delete" value="${ad.id}">Delete</button>

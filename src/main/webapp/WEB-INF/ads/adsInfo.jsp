@@ -19,14 +19,14 @@
 
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <div class="row">
-        <div class="card justify-content-center align-items-center">
+        <div id="card-id" class="card justify-content-center align-items-center">
             <div class="card-img-top">
                 <img src="../../asset/droid.jpeg" class="  rounded mx-auto d-block" width="75%" height="auto">
             </div>
             <ul>
-                <li><h5>${ad.Price}</h5></li>
+                <li><h5>${selectedAd.price}</h5></li>
                 <li> <p id="ad_user"><a href="adlisterProfile?user=${usersDao.findByUserId(ad.userId).getUsername()}">${usersDao.findByUserId(ad.userId).getUsername()}</a></p></li>
-                <li> <p class="card-text">${ad.Details}</p></li>
+                <li> <p class="card-text">${selectedAd.description}</p></li>
             </ul>
         </div>
 

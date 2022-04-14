@@ -18,16 +18,16 @@ import static java.lang.Long.parseLong;
 public class AdInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String adInfo = request.getParameter("card-id");
+        String adInfo = request.getParameter("adId");
         long adId= parseLong(adInfo);
 
 
         System.out.println(request.getSession().getAttribute("user"));
-//        String ad_user = request.getParameter("ad")
+//        String ad_user = request.getParameter("ad");
 
         Ad currentAd = DaoFactory.getAdsDao().findByAdId(adId);
         request.setAttribute("selectedAd", currentAd);
-        request.getRequestDispatcher("/WEB-INF/ads/adInfo.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/ads/adsInfo.jsp").forward(request,response);
     }
 
     @Override
