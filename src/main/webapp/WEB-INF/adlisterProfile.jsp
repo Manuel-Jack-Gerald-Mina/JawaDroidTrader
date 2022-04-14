@@ -39,9 +39,10 @@
             <div class="card-body justify-content-center align-items-center" id="userADList">
                 <h5 class="card-title">My Ads.</h5>
                 <ul class="listOfAd">
-                <c:forEach var="ad" items="${ads}">
-                    <li></li>
-                </c:forEach>
+                    <p>${ads}</p>
+<%--                <c:forEach var="ad" items="${ads}">--%>
+<%--                    <li></li>--%>
+<%--                </c:forEach>--%>
                 </ul>
             </div>
 

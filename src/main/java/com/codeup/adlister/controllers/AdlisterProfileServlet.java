@@ -26,14 +26,23 @@ public class AdlisterProfileServlet extends HttpServlet {
 //       // PreparedStatement statement = connection.prepareStatement(sql);
 //        User user = DaoFactory.getUsersDao().findByUserId(userID);
 
+long userId = Long.parseLong(request.getParameter("user")); //bring in value from query string
+
+        System.out.println("userId = " + userId);
+
+        request.setAttribute("user_id",DaoFactory.getUsersDao().findByUserId(userId));
 
 
-        String id = request.getParameter("profileId");
-        long userID = parseLong(id);
-        Ad ads = DaoFactory.getAdsDao().findByUserID(userID);
-
+//        String id = request.getParameter("profileId");
+//        long userID = parseLong(id);
+        Ad ads = DaoFactory.getAdsDao().findByUserID(userId);
+//        for(Ad ad : ads){
+//            System.out.println(ad.getTitle() + " " + ad.getDescription());
+//        }
         request.setAttribute("ads",ads);
-        request.getRequestDispatcher("/adlisterProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/adlisterProfile.jsp").forward(request, response);
+
+        //need to get the user
 
 
     }

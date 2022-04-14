@@ -25,7 +25,7 @@
             <div class="card-body align-content-center">
             <h4 class="card-title  ">${ad.title}</h4><br>
 
-                <h5><a href="adlisterProfile/?user=${usersDao.findByUserId(ad.userId).getUsername()}" >user: ${usersDao.findByUserId(ad.userId).getUsername()}</a></h5>
+                <h5><a href="adlisterProfile?user=${ad.userId}" >user: ${usersDao.findByUserId(ad.userId).getUsername()}</a></h5>
 
 <%--<c:param name="userid" value="${ad.userId}" />--%>
                     <%--<h5 class="card-title">${param.userbyid}</h5>--%>
