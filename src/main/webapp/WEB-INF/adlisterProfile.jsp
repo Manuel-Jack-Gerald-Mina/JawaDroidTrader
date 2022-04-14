@@ -33,14 +33,15 @@
         <div class="card profile-card  justify-content-center align-items-center">
             <img src="../asset/jawa.png" class="card-img-top" alt="...">
             <div class="card-body justify-content-center align-items-center">
-                <h5 class="card-title">${param.profileId}</h5>
-                <p class="card-text">Hi ! I'm ${param.profileId}, and from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
+                <h5 class="card-title">${user_id.getUsername()}</h5>
+                <p class="card-text">Hi ! I'm ${user_id.getUsername()}, and from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
             </div>
             <div class="card-body justify-content-center align-items-center" id="userADList">
                 <h5 class="card-title">My Ads.</h5>
                 <ul class="listOfAd">
+
                 <c:forEach var="ad" items="${ads}">
-                    <li></li>
+                    <li><a href="/adsInfo?adId=${ad.userId}">${ad.title}</a></li>
                 </c:forEach>
                 </ul>
             </div>

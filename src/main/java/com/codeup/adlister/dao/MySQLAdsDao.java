@@ -69,7 +69,9 @@ public class MySQLAdsDao implements Ads {
     private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
         List<Ad> ads = new ArrayList<>();
         while (rs.next()) {
+
             ads.add(new Ad(
+
                     rs.getLong("id"),
                     rs.getLong("user_id"),
                     rs.getString("title"),
@@ -107,6 +109,19 @@ public class MySQLAdsDao implements Ads {
             }
         }
 
+    public List<Ad> findAllByUserID(long userId) {
+
+        String query = "SELECT * FROM ads WHERE user_id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, userId);
+            ResultSet rs = stmt.executeQuery();
+
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding ALL ads by userId ", e);
+        }
+    }
 
     public long deleteAd(long id) {
 
