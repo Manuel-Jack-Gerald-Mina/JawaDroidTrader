@@ -46,7 +46,7 @@ public class ChangePasswordServlet extends HttpServlet {
         boolean rightPassword = currentPassword.equals(user.getPassword());
 
             if (match) {
-                response.sendRedirect("/changePassword = 5");
+                response.sendRedirect("/changePassword?attempt=5");
 
             } else if (samePassword) {
 //            request.getRequestDispatcher("/WEB-INF/changePassword.jsp").forward(request, response);

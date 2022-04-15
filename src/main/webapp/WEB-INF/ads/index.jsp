@@ -35,11 +35,16 @@
             <a href="/adsInfo?adId=${ad.id}" class="btn btn-dark text-warning rounded"> View this droid</a>
              <c:if test="${sessionScope.user.id == ad.userId}">
                  <form method="post">
-                 <button type="submit" name="delete" id="delete" value="${ad.id}">Delete</button>
+                     <input type="hidden" name="delete" value="${ad.id}">
+                     <input class="btn btn-danger btn-sm" type="submit" value="Delete">
                  </form>
-                 <form>
-                 <button  name="edit">Edit</button>
+
+                 <form href="/ads/edit" method="post">
+                     <a href="/ads/edit" class="card-link">Edit</a>
                  </form>
+<%--                 <form>--%>
+<%--                 <button  name="edit">Edit</button>--%>
+<%--                 </form>--%>
              </c:if>
             </div>
             </div>
