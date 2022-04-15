@@ -8,7 +8,7 @@
             <a class="navbar-brand" href="../../index.jsp">Jawa Droids Trading co.</a>
         </div>
 
-        <form action="ads" method="get">
+        <form action="<c:url value="http://localhost:8080/ads"/>" method="get">
             <div class="form-group">
                 <label for="search">Search by</label>
                 <select class="form-control" name="searchType" id="search">
@@ -39,14 +39,14 @@
 <c:choose>
         <c:when test="${sessionScope.user != null}">
         <ul class="nav navbar-nav navbar-right">
-            <li> <a href="profile"><c:out value="${sessionScope.user.username}" /></a></li>
-            <li> <a href="logout">Logout</a></li>
+            <li> <a href="<c:url value="http://localhost:8080/profile"/>"><c:out value="${sessionScope.user.username}" /></a></li>
+            <li> <a href="<c:url value="http://localhost:8080/logout"/>">Logout</a></li>
         </ul>
         </c:when>
 <c:otherwise>
         <ul class="nav navbar-nav navbar-right">
-            <li> <a href="login">Login</a></li>
-            <li> <a href="register">Sign up</a></li>
+            <li> <a href="<c:url value="http://localhost:8080/login"/>">Login</a></li>
+            <li> <a href="<c:url value="http://localhost:8080/register"/>">Sign up</a></li>
         </ul>
 </c:otherwise>
     </c:choose>

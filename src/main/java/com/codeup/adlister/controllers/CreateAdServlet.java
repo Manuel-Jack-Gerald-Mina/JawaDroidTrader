@@ -13,7 +13,10 @@ import java.io.IOException;
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/login");
+            return;
+        }
         String attempt = request.getParameter("attempt");
         request.setAttribute("failed", attempt);
 
@@ -31,9 +34,10 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect("/ads/create?attempt=2");
     }else{
         Ad ad = new Ad(
-                1, // for now we'll hardcode the user id
+                Long.parseLong(request.getParameter("userId")), // need to make a parameter on page to get session.user
                 request.getParameter("title"),
-                request.getParameter("description")
+                request.getParameter("description"),
+                Double.parseDouble(request.getParameter("price"))
         );
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");

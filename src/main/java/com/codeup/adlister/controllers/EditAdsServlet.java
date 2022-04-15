@@ -33,9 +33,10 @@ public class EditAdsServlet extends HttpServlet {
         } else {
 
             Ad ad = new Ad(
-                    1, // for now we'll hardcode the user id
+                    Long.parseLong(request.getParameter("userId")), // need to make a parameter on page to get session.user
                     request.getParameter("title"),
-                    request.getParameter("description")
+                    request.getParameter("description"),
+                    Double.parseDouble(request.getParameter("price"))
             );
             DaoFactory.getAdsDao().updateAd(ad);
             response.sendRedirect("/ads");

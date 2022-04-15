@@ -27,8 +27,14 @@
             </c:when>
         </c:choose>
         <div class="form-group">
+
+
             <label for="title">Title</label>
             <input id="title" name="title" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label for="price">Price(in galactic credits)</label>
+            <input type="number" id="price" name="price" class="form-control" step="1.44" />
         </div>
         <div class="form-group">
             <label for="description">Description</label>
