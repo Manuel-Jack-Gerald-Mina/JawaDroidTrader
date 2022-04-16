@@ -31,7 +31,7 @@
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <div class="row position-absolute ">
         <div class="card profile-card  justify-content-center align-items-center">
-            <img src="../asset/jawa.png" class="card-img-top" alt="...">
+            <img id = "profilePic" src="../asset/jawa.png" class="card-img-top" alt="...">
             <div class="card-body justify-content-center align-items-center">
                 <h5 class="card-title">${user_id.getUsername()}</h5>
                 <p class="card-text">Hi ! I'm ${user_id.getUsername()}, and from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
