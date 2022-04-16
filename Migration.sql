@@ -13,10 +13,21 @@ CREATE TABLE users
     username     VARCHAR(50) NOT NULL,
     password     VARCHAR(255) NOT NULL,
     email        VARCHAR(50) NOT NULL,
+    profilePic    VARCHAR(255) NOT NULL DEFAULT 'default.jpg',
     PRIMARY KEY (id),
     UNIQUE (username)
 );
 
+/*CREATE TABLE users
+(
+    id           INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    username     VARCHAR(50) NOT NULL,
+    password     VARCHAR(255) NOT NULL,
+    email        VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE (username)
+);
+*/
 CREATE TABLE ads
 (
     id           INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -46,8 +57,20 @@ CREATE TABLE ads_categories (
     ON DELETE CASCADE
 );
 
+INSERT INTO users (id, username, password, email, profilePic)
+VALUES (1, 'adlister', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'adlister@example.com','jawaUser/Jawa1.png'),
+       (2, 'jawa', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'jawa@example.com', 'jawaUser/jawa2.jpeg'),
+       (3, 'mina', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'mina@example.com','jawaUser/jawa3.png'),
+       (4, 'jack', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'jack@example.com','jawaUser/jawa4.jpeg'),
+       (5, 'geraldo', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'geraldo@example.com','jawaUser/jawa5.jpeg'),
+       (6, 'alex', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'alex@example.com','jawaUser/jawa6.png'),
+       (7, 'cosmo', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'cosmo@example.com','jawaUser/jawa7.png'),
+       (8, 'orangeBanana', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'orangeBanana@example.com','jawaUser/jawa8.png'),
+       (9, 'PotatoPeeler', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'PotatoPeeler@example.com','jawaUser/jawa9.jpeg'),
+       (10, 'BlackLagoon', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'BlackLagoon@example.com','jawaUser/jawa10.png'),
+       (11, 'TwitterUser1', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'TwitterUser1@example.com','jawaUser/jawa11.png');
 
-INSERT INTO users (id, username, password, email)
+/*INSERT INTO users (id, username, password, email)
 VALUES (1, 'adlister', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'adlister@example.com'),
        (2, 'jawa', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'jawa@example.com'),
        (3, 'mina', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'mina@example.com'),
@@ -59,7 +82,7 @@ VALUES (1, 'adlister', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89
        (9, 'PotatoPeeler', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'PotatoPeeler@example.com'),
        (10, 'BlackLagoon', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'BlackLagoon@example.com'),
        (11, 'TwitterUser1', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'TwitterUser1@example.com');
-
+*/
 
 INSERT INTO ads (id, user_id, title, description, price)
 VALUES (1, 2, 'Leftover Droidikas', 'Looking to trade some droidika and droidika parts from a cave. serious trades only',54.1),
