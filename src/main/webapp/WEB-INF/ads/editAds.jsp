@@ -31,17 +31,17 @@
         <div class="form-group">
 
             <input type="hidden" name="userId" value="${sessionScope.user.id}">
-
+            <input type="hidden" name="adId" value="${adId}">
             <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text" placeholder="<%--${ad.getTitle()}--%>">
+            <input id="title" name="title" class="form-control" type="text" placeholder="${ad.getTitle()}" >
         </div>
         <div class="form-group">
             <label for="price">Price(in galactic credits)</label>
-            <input type="number" id="price" name="price" class="form-control" step="0.01" placeholder="<%--${ad.getPrice()}--%>"/>
+            <input type="number" id="price" name="price" class="form-control" step="0.01" placeholder="${ad.getPrice()}" />
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" placeholder="<%--${ad.getDescription()}--%>"></textarea>
+            <textarea id="description" name="description" class="form-control" placeholder="${ad.getDescription()}" ></textarea>
         </div>
         <input type="submit" class="btn btn-block btn-primary">
     </form>

@@ -16,8 +16,9 @@ import static java.lang.Long.parseLong;
 @WebServlet(name = "controllers.EditAdsServlet", urlPatterns = "/ads/edit")
 public class EditAdsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        long Adid = parseLong(request.getParameter("EditAdId"));
-        System.out.println(Adid);
+        String Adid = request.getParameter("EditAdId");
+
+//        System.out.println("from get: "+Adid);
 
         request.setAttribute("adId",Adid); // from index grabbing the hidden parameter
 
@@ -32,25 +33,47 @@ public class EditAdsServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String Adid = request.getParameter("adId");
+        Ad ad = DaoFactory.getAdsDao().findByAdId(Long.parseLong(Adid));
+        String userId = request.getParameter("userId"); // need to make a parameter on page to get session.user
+        String title =  request.getParameter("title");
+        String description = request.getParameter("description");
+        String price = request.getParameter("price");
 
-        boolean titleEmpty = request.getParameter("title").isEmpty();
+//        System.out.println("from post : "+Adid);
+        boolean titleEmpty = title.isEmpty();
+        boolean descriptionEmpty = description.isEmpty();
+        boolean priceEmpty = price.isEmpty();
 
-        boolean descriptionEmpty = request.getParameter("description").isEmpty();
+//        if (titleEmpty) {
+//            response.sendRedirect("/ads/edit?attempt=1");
+//        } else if (descriptionEmpty) {
+//            response.sendRedirect("/ads/edit?attempt=2");
+//        } else
+//        {
+
         if (titleEmpty) {
-            response.sendRedirect("/ads/edit?attempt=1");
-        } else if (descriptionEmpty) {
-            response.sendRedirect("/ads/edit?attempt=2");
-        } else
-        {
-
-            Ad ad = new Ad(
-                    1, //parseLong(request.getParameter("userId")), // need to make a parameter on page to get session.user
-                    request.getParameter("title"),
-                    request.getParameter("description"),
-                    parseDouble(request.getParameter("price"))
-            );
-            DaoFactory.getAdsDao().updateAd(ad);
-            response.sendRedirect("/ads");
+            title = ad.getTitle();
         }
+        if (descriptionEmpty) {
+            description = ad.getDescription();
+        }
+        double newPrice;
+        if (priceEmpty) {
+            newPrice = ad.getPrice();
+        } else{
+            newPrice = Double.parseDouble(request.getParameter("price")); }
+
+
+        Ad updatedAd = new Ad(
+                    Long.parseLong(Adid),
+                    Long.parseLong(userId), // need to make a parameter on page to get session.user
+                    title,
+                    description,
+                    newPrice
+            );
+            DaoFactory.getAdsDao().updateAd(updatedAd);
+            response.sendRedirect("/ads");
+//        }
     }
 }
