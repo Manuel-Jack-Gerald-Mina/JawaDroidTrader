@@ -64,15 +64,26 @@ VALUES (1, 'adlister', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89
 INSERT INTO ads (id, user_id, title, description, price)
 VALUES (1, 2, 'Leftover Droidikas', 'Looking to trade some droidika and droidika parts from a cave. serious trades only',54.1),
        (2, 1, 'Blaster rifles', 'Sleeping stromtroopers "lost" their blasters. equal value or greater, I know what I have',33391),
-       (3, 2, 'C3PO unit along a R2D2 unit', 'as title. Restraining bolt already attached',5464),
-       (4, 2, 'Mandolorian armor for sale', 'seems in good condition. looking for an egg',563.2),
+       (3, 2, 'C3PO unit along a R2D2 unit', '3po-series protocol droid to interact with orginics, prograamed primarily for etiquette and protocol. as title. Restraining bolt already attached',5464),
+       (4, 2, 'Mandolorian armor for sale', 'seems in good condition. looking for an mud-horn egg',113000.62),
        (5, 3, 'Weapons for trade', 'looking to trade a few tusken Cycler rifles and Gaderffii. ',352.3),
        (6, 2, 'droid for sale!', 'looking to trade a small ball-shaped droid.serious inquires only',434),
        (7, 4, 'Lightsabers!', 'selling Lightsabers. cannot guarantee they work. no refunds',2323),
        (8, 6, 'selling Banthas', 'no room for them, looking to see what i can get for this herd',34353),
        (9, 7, 'Razorcrest and parts', 'Razorcrest and few parts. reassembly costs extra',6464),
        (10, 8, 'help?', ' not an ad. but has any other Jawa left Tatooine? is it worth the trouble?',46464),
-       (11, 9, 'Teaching young Jawas', 'looking for locations of items of value to help teach new jawas to scrap',56575);
+       (11, 9, 'Teaching young Jawas', 'Looking for locations of items of value to help teach new jawas to scrap',56575),
+       (12, 3, 'Beskar','Rare , Extremely rare alloy, Own it with your own risk, especially if you have price on your head and willing to trade with Starfighter without a locator+$$',1100000.00),
+       (13,7, 'Hyperdrive-generator','Vital starship engine system that allows light speed travel. This is a must system to travel between galaxies. It allows travelers to traverse a galaxy spanning over 120,000 light-years in only few hours or days.',123454.23),
+       (14, 6,'Laser-canons','firs to starfighters and starships. /could be fixed in place or attached to a turret. ** mount not included, Snowspeeder in picture not included.',2345.98),
+       (15,9,'Shifter knob','Miscellaneous - fits Razorcrest shifter',12.00),
+       (16,8,'E-web','Heavy repeating blaster  .optimum range 150 meters /maximum range 750 meters. ',12341.26),
+       (17,3,'IG-88','Assassin droid , manufactured by Holowan Laboratories, unactivated.',87659.00),
+       (18,5,'Speeder bike','Hoverbike open-air repulsolift. Max altitute 10 meter, must have \'it\' item for Dune-sea',45009.87),
+       (19,4,'Gaffi Stick','Traditional melle weapon of Tusken Raiders, Tatooine. ',1232.90),
+       (20,4,'Gmorrean\'s exe','Vibro-ax for Gamorrean warriors. ',125.90),
+       (21,3, 'Armor','Customized Mandalorain armor. looking to trade for rancor-claw',189000);
+
 
 
 INSERT INTO categories (id, category)
@@ -102,5 +113,16 @@ VALUES  (1,1),
         (8,7),
         (9,4),
         (10,10),
-        (11,8);
+        (11,8),
+       (12,10),
+       (13,2),
+        (14,5),
+        (15,8),
+        (16,5),
+        (17,3),
+        (18,10),
+        (19,5),
+        (20,5),
+        (21,6);
+
 
