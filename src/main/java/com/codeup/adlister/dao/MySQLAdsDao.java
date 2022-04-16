@@ -38,11 +38,12 @@ public class MySQLAdsDao implements Ads {
     @Override
     public long insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(user_id, title, description, price) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setLong(1, ad.getUserId());
             stmt.setString(2, ad.getTitle());
             stmt.setString(3, ad.getDescription());
+            stmt.setDouble(4, ad.getPrice());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -82,18 +83,20 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
-    public Ad updateAd(Ad editAd){
-        String query = "UPDATE ads SET title= ?,description = ? WHERE id = ? ";
+    public String updateAd(Ad ad){
+        String query = "UPDATE ads SET title= ?,description = ?  ";
         try {
             PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1,editAd.getTitle());
-            stmt.setString(2,editAd.getDescription());
-            stmt.setLong(3,editAd.getId());
+            stmt.setString(1,ad.getTitle());
+            stmt.setString(2,ad.getDescription());
+//            stmt.setLong(3,editAd.getId());
             stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
         } catch (SQLException e) {
             throw new RuntimeException("Error editing user", e);
         }
-        return editAd;
+        return ad.getDescription();
     }
 
     @Override
@@ -155,6 +158,7 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error finding a user by username", e);
         }
     }
+
 
 
 }

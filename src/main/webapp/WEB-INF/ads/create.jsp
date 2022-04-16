@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -10,6 +11,14 @@
     <div class="container">
         <h1>Create a new Ad</h1>
         <form action="/ads/create" method="post">
+            <c:choose>
+                <c:when test="${failed == '1'}">
+                    <div>Title is Empty.</div>
+                </c:when>
+                <c:when test="${failed == '2'}">
+                    <div>Description is Empty.</div>
+                </c:when>
+            </c:choose>
             <div class="form-group">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">

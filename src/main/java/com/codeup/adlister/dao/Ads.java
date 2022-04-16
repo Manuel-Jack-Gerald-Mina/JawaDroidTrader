@@ -12,7 +12,7 @@ public interface Ads {
     long insert(Ad ad);
     long deleteAd(long id);
     Ad findByAdId(long adId);
-    Ad updateAd(Ad ad);
+    String updateAd(Ad ad);
     Ad findByUserID(long userId);
     List<Ad>findAllByUserID(long userId);
 
