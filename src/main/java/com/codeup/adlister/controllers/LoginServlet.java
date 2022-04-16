@@ -33,8 +33,8 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        System.out.println("original = " + user.getPassword());
-        System.out.println("password entered: " + password);
+//        System.out.println("original = " + user.getPassword());
+//        System.out.println("password entered: " + password);
 
         boolean validAttempt = Password.check(password, user.getPassword() );
 
@@ -43,11 +43,7 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
 
         } else {
-//            PrintWriter script = response.getWriter();
-//            script.println("<script>");
-//            script.println("alert('You have the wrong user_ID or password')");
-//            script.println("history.back()"); // going back to prior page ,-->login page
-//            script.println("</script>");
+
             response.sendRedirect("/login?attempt=1");
         }
 

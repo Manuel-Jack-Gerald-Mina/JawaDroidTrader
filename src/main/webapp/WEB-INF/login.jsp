@@ -6,15 +6,16 @@
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
 <%--    bootstrap --%>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel ="stylesheet" href="../CSS/style.css" >
     <link href="../asset/jawa_facial.png" rel="icon" type="image/x-icon" />
 
    
 
 
 </head>
-<body>
+<body id="logIn">
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
     <div class="container">
@@ -32,7 +33,7 @@
                 <label for="password">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
-            <input type="submit" class="btn btn-primary btn-block" value="Log In">
+            <input type="submit" class="btn btn-warning btn-block" value="Log In">
         </form>
     </div>
 <%--    bootstrap--%>
