@@ -22,7 +22,7 @@
     <div class="row">
         <div id="card-id" class="card justify-content-center align-items-center">
             <div class="card-img-top">
-                <img src="../../asset/droid.jpeg" class="  rounded mx-auto d-block" width="75%" height="auto">
+                <img src="../../asset/Adsimg/droid.jpeg" class="  rounded mx-auto d-block" width="75%" height="auto">
             </div>
             <div>
                 <ul>

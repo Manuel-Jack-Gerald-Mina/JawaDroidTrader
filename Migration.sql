@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS ads;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS ads_categories;
+DROP TABLE IF EXISTS pictures;
+DROP TABLE IF EXISTS user_picture;
 SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE users
@@ -46,6 +48,23 @@ CREATE TABLE ads_categories (
     ON DELETE CASCADE
 );
 
+CREATE  TABLE pictures (
+    id  INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    picture_url VARCHAR(50) NOT NULL DEFAULT 'Jawa_fullbody.png',
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE user_picture (
+                                user_id INT UNSIGNED NOT NULL,
+                                picture_id INT UNSIGNED NOT NULL,
+                                FOREIGN KEY (user_id) REFERENCES users(id)
+                                    ON DELETE CASCADE,
+                                FOREIGN KEY (picture_id) REFERENCES pictures(id)
+                                    ON DELETE CASCADE,
+                                UNIQUE(user_id)
+);
+
 
 INSERT INTO users (id, username, password, email)
 VALUES (1, 'adlister', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'adlister@example.com'),
@@ -59,6 +78,33 @@ VALUES (1, 'adlister', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89
        (9, 'PotatoPeeler', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'PotatoPeeler@example.com'),
        (10, 'BlackLagoon', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'BlackLagoon@example.com'),
        (11, 'TwitterUser1', '$2a$12$Bn6hlBzpvIo9e7304I56mOggzhrJgfLf9hJVdJzUxIp3h3V89k/LW', 'TwitterUser1@example.com');
+
+INSERT INTO pictures (id, picture_url)
+VALUES (1, 'jawaUser/Jawa1.png'),
+       (2,'jawaUser/jawa2.jpeg'),
+       (3,'jawaUser/jawa3.png'),
+       (4,'jawaUser/jawa4.jpeg'),
+       (5,'jawaUser/jawa5.jpeg'),
+       (6,'jawaUser/jawa6.png'),
+       (7,'jawaUser/jawa7.png'),
+       (8,'jawaUser/jawa8.png'),
+       (9,'jawaUser/jawa9.jpeg'),
+       (10,'jawaUser/jawa10.png'),
+       (11,'jawaUser/jawa11.png');
+
+
+INSERT INTO user_picture (user_id, picture_id)
+VALUES (1, 1),
+       (2, 2),
+       (3,3),
+       (4,4),
+       (5,5),
+       (6,6),
+       (7,7),
+       (8,8),
+       (9,9),
+       (10,10),
+       (11,11);
 
 
 INSERT INTO ads (id, user_id, title, description, price)
@@ -78,11 +124,11 @@ VALUES (1, 2, 'Leftover Droidikas', 'Looking to trade some droidika and droidika
        (14, 6,'Laser-canons','firs to starfighters and starships. /could be fixed in place or attached to a turret. ** mount not included, Snowspeeder in picture not included.',2345.98),
        (15,9,'Shifter knob','Miscellaneous - fits Razorcrest shifter',12.00),
        (16,8,'E-web','Heavy repeating blaster  .optimum range 150 meters /maximum range 750 meters. ',12341.26),
-       (17,3,'IG-88','Assassin droid , manufactured by Holowan Laboratories, unactivated.',87659.00),
-       (18,5,'Speeder bike','Hoverbike open-air repulsolift. Max altitute 10 meter, must have \'it\' item for Dune-sea',45009.87),
-       (19,4,'Gaffi Stick','Traditional melle weapon of Tusken Raiders, Tatooine. ',1232.90),
-       (20,4,'Gmorrean\'s exe','Vibro-ax for Gamorrean warriors. ',125.90),
-       (21,3, 'Armor','Customized Mandalorain armor. looking to trade for rancor-claw',189000);
+       (17,3,'IG-88','Assassin droid , manufactured by Holowan Laboratories, deactivated.',87659.00),
+       (18,5,'Speeder bike','Hoverbike open-air repulsolift. Max altitute 10 meter, must have the \'item\' from the Dune-sea',45009.87),
+       (19,4,'Gaffi Stick','Traditional melee weapon of Tusken Raiders, Tatooine. ',1232.90),
+       (20,4,'Gamorrean\'s exe','Vibro-ax for Gamorrean warriors. ',125.90),
+       (21,3, 'Armor','Customized Mandalorian armor. looking to trade for rancor-claw',189000);
 
 
 
@@ -101,7 +147,6 @@ VALUES (1,'Droid parts'),
 INSERT INTO ads_categories (ads_id, category_id)
 VALUES  (1,1),
         (1,3),
-        (1,6),
         (1,6),
         (2,5),
         (3,1),

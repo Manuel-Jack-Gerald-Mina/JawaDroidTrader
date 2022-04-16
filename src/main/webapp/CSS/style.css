@@ -1,8 +1,5 @@
 body{
-background-image: url("/asset/Simplistic-Tatooine.jpg");
-    background-position: center;
-
-    background-repeat: no-repeat;
+    background: url("/asset/Simplistic-Tatooine.jpg") no-repeat fixed center;
     background-size: cover;
 }
 
@@ -15,10 +12,10 @@ background-image: url("/asset/Simplistic-Tatooine.jpg");
     background-color: darkgoldenrod;
 
 }
-#adPage{
+/*#adPage{
     background-image: none;
     background-color: wheat;
-}
+}*/
 a{color: black;
 
 }
