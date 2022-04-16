@@ -25,7 +25,7 @@ public class AdlisterProfileServlet extends HttpServlet {
 long userId = Long.parseLong(request.getParameter("user")); //bring in value from query string
 
 
-        System.out.println("userId = " + userId);
+//        System.out.println("userId = " + userId);
 
         request.setAttribute("user_id",DaoFactory.getUsersDao().findByUserId(userId));
 

@@ -84,12 +84,13 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
     public String updateAd(Ad ad){
-        String query = "UPDATE ads SET title= ?,description = ?  ";
+        String query = "UPDATE ads SET title= ?,description = ?, price = ? WHERE id = ?  ";
         try {
             PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1,ad.getTitle());
             stmt.setString(2,ad.getDescription());
-//            stmt.setLong(3,editAd.getId());
+            stmt.setDouble(3,ad.getPrice());
+            stmt.setLong(4,ad.getId());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();

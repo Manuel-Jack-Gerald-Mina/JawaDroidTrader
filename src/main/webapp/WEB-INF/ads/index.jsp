@@ -39,8 +39,9 @@
                      <input class="btn btn-danger btn-sm" type="submit" value="Delete">
                  </form>
 
-                 <form href="/ads/edit" method="post">
-                     <a href="/ads/edit" class="card-link">Edit</a>
+                 <form action="/ads/edit" method="post">
+                     <input type="hidden" name="EditAdId" value="${ad.id}">
+                     <input class="btn btn-warning btn-sm" type="submit" value="Edit">
                  </form>
 <%--                 <form>--%>
 <%--                 <button  name="edit">Edit</button>--%>

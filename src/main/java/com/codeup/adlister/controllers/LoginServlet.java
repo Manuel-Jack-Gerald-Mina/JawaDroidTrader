@@ -33,8 +33,8 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        System.out.println("original = " + user.getPassword());
-        System.out.println("password entered: " + password);
+//        System.out.println("original = " + user.getPassword());
+//        System.out.println("password entered: " + password);
 
         boolean validAttempt = Password.check(password, user.getPassword() );
 

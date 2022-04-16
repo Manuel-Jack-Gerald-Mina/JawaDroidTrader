@@ -10,13 +10,13 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Create a new Ad" />
+        <jsp:param name="title" value="edit page" />
     </jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <div class="container">
-    <h1>Insert Ad's title to edit</h1>
+    <h1>edit page</h1>
     <form action="/ads/edit" method="post">
         <c:choose>
             <c:when test="${failed == '1'}">
@@ -26,20 +26,22 @@
                 <div>Description is Empty.</div>
             </c:when>
         </c:choose>
+
+        <c:set var="ad" value="${AdsDao.findByAdId(adId)}" />
         <div class="form-group">
 
             <input type="hidden" name="userId" value="${sessionScope.user.id}">
 
             <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text">
+            <input id="title" name="title" class="form-control" type="text" placeholder="<%--${ad.getTitle()}--%>">
         </div>
         <div class="form-group">
             <label for="price">Price(in galactic credits)</label>
-            <input type="number" id="price" name="price" class="form-control" step="1.44" />
+            <input type="number" id="price" name="price" class="form-control" step="0.01" placeholder="<%--${ad.getPrice()}--%>"/>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control"></textarea>
+            <textarea id="description" name="description" class="form-control" placeholder="<%--${ad.getDescription()}--%>"></textarea>
         </div>
         <input type="submit" class="btn btn-block btn-primary">
     </form>
