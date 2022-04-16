@@ -20,7 +20,7 @@
 
                     <textarea class="form-control mr-sm-2" name="search" placeholder="search" id="Search_box" rows="1"></textarea>
                 </div>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
         </form>
 
         <%--<form class="form-inline ">
