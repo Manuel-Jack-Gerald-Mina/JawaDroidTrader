@@ -2,13 +2,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel ="stylesheet" href="../../CSS/style.css" >
+
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+
+    <link rel ="stylesheet" href="../../CSS/style.css" >
     <link href="../../asset/jawa_facial.png" rel="icon" type="image/x-icon" />
 </head>
-<body>
+<body id="adPage">
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
@@ -31,7 +33,7 @@
                     <%--<h5 class="card-title">${param.userbyid}</h5>--%>
 
 
-            <p class="card-text ">${ad.price}</p>
+            <p class="card-text ">Galactic Credits ${ad.price}</p>
             <a href="/adsInfo?adId=${ad.id}" class="btn btn-dark text-warning rounded"> View this droid</a>
              <c:if test="${sessionScope.user.id == ad.userId}">
                  <form method="post">
