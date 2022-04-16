@@ -23,7 +23,7 @@
             <div class="col-3 m-2">
             <div class=" card   align-content-center" id ="card2"  style="width: 18rem; ">
 
-            <img class=" card-img-top" src="../../asset/droid.jpeg" alt="Card image cap">
+            <img class=" card-img-top" src="../../asset/Adsimg/droid.jpeg" alt="Card image cap">
             <div class="card-body align-content-center">
             <h4 class="card-title  ">${ad.title}</h4><br>
 
