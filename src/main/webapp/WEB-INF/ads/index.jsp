@@ -27,14 +27,14 @@
             <div class="card-body align-content-center">
             <h4 class="card-title  ">${ad.title}</h4><br>
 
-            <h5><a href="adlisterProfile?user=${ad.userId}" >user: ${usersDao.findByUserId(ad.userId).getUsername()}</a></h5>
+            <h5><a href="adlisterProfile?user=${ad.userId}" >Trader: ${usersDao.findByUserId(ad.userId).getUsername()}</a></h5>
 
               <%--<c:param name="userid" value="${ad.userId}" />--%>
                     <%--<h5 class="card-title">${param.userbyid}</h5>--%>
 
 
             <p class="card-text ">Galactic Credits ${ad.price}</p>
-            <a href="/adsInfo?adId=${ad.id}" class="btn btn-dark text-warning rounded"> View this droid</a>
+            <a href="/adsInfo?adId=${ad.id}" class="btn btn-dark text-warning rounded"> View this Listing</a>
              <c:if test="${sessionScope.user.id == ad.userId}">
                  <form method="post">
                      <input type="hidden" name="delete" value="${ad.id}">

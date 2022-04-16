@@ -22,3 +22,10 @@ background-image: url("/asset/Simplistic-Tatooine.jpg");
 a{color: black;
 
 }
+
+.line{
+    width: 112px;
+    height: 47px;
+    border-bottom: 1px darkgoldenrod;
+    position: relative;
+}
