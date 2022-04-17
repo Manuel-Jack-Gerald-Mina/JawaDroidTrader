@@ -5,6 +5,7 @@ import com.codeup.adlister.models.user_Picture;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MySQLPicturesDAO implements Pictures {
@@ -25,8 +26,15 @@ public class MySQLPicturesDAO implements Pictures {
 
     @Override
     public List<Picture> all() {
-        return null;
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM pictures");
+            ResultSet rs = stmt.executeQuery();
+            return createPicturesFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
     }
+
 
     @Override
     public Picture findByPictureId(long id) {
@@ -46,7 +54,7 @@ public class MySQLPicturesDAO implements Pictures {
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, id);
-            user_Picture user_picture=extractPictureViaUserId(stmt.executeQuery());
+            user_Picture user_picture = extractPictureViaUserId(stmt.executeQuery());
             return findByPictureId(user_picture.getPicture_id());
 
         } catch (SQLException e) {
@@ -58,14 +66,12 @@ public class MySQLPicturesDAO implements Pictures {
     public long changePicture(long user_id, long picture_id) {
         String query = "UPDATE user_picture SET picture_id = ? WHERE user_id = ? ";
         try {
-            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, picture_id);
             stmt.setLong(2, user_id);
-            stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            rs.next();
+            stmt.execute();
         } catch (SQLException e) {
-            throw new RuntimeException("Error updating picture",e);
+            throw new RuntimeException("Error updating picture", e);
         }
         return user_id;
     }
@@ -86,12 +92,16 @@ public class MySQLPicturesDAO implements Pictures {
         );
     }
 
-/* gotta think up a way to go through the user_picture relationship, like the catagory relationship
-    private Picture extractUserPictureId(ResultSet rs) throws SQLException {
-        rs.next();
-        return new Picture(
-                rs.getLong("id"),
-                rs.getString("url")
-        );*/
+    private List<Picture> createPicturesFromResults(ResultSet rs) throws SQLException {
+        List<Picture> pictures = new ArrayList<>();
+        while (rs.next()) {
+            pictures.add(new Picture(
+                    rs.getLong("id"),
+                    rs.getString("picture_url")
+            ));
+        }
+        return pictures;
     }
+}
+
 
