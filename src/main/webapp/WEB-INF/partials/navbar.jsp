@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label for="search">Search by</label>
                 <select class="form-control" name="searchType" id="search">
-                    <option  value="AdId">Ad Id</option>
+                    <%--<option  value="AdId">Ad Id</option>--%>
                     <option  value="AdTitle">Title</option>
                     <option  value="Username">User</option>
                     <option  value="Category">Categories</option>

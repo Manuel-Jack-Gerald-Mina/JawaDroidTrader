@@ -160,6 +160,8 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+ public List<Ad> searchThroughAds(String searchType, String TitleUserCategory){
 
+ }
 
 }

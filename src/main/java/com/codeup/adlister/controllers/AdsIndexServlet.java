@@ -18,24 +18,50 @@ import static java.lang.Long.parseLong;
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String search = request.getParameter("searchType");
-        String searchInput = request.getParameter("search");
+        request.setAttribute("searchType",request.getParameter("searchType"));
+        request.setAttribute("search",request.getParameter("search"));
 
-        /* String stringUser_id = request.getParameter("userid");
-        long userid = parseLong(stringUser_id);*/
-/*        if(search != null && searchInput != null) {
-            //adID Title User Category
+
+        //        System.out.println("search: "+searchInput);
+        /* if(searchInput.isEmpty()){
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
-            request.setAttribute("users", DaoFactory.getUsersDao().all());
-        } else {*/
+        } else {
+            switch (search) {
+                case ("AdId"): {
+                    request.setAttribute("ads", DaoFactory.getAdsDao().findByAdId(Long.parseLong(searchInput)));
+                    System.out.println("im about to search by Adid!");
+                    break;
+                }
+                case ("AdTitle"): {
+                    request.setAttribute("ads", DaoFactory.getAdsDao().findByAdTitle(searchInput));
+                    System.out.println("im about to search by AdTitle!");
+                    break;
+                }
+                case ("Username"): {
+                    request.setAttribute("ads", DaoFactory.getAdsDao().findByUsername(searchInput));
+                    System.out.println("im about to search by Username!");
+                    break;
+                }
+                case ("Category"): {
+                    request.setAttribute("ads", DaoFactory.getAdsDao().findByCategory(searchInput));
+                    System.out.println("im about to search by Category!");
+                    break;
+                }
+                default: {
+                    request.setAttribute("ads", DaoFactory.getAdsDao().all());
+                    System.out.println("im just in case something goes wrong!");
+                }
+            }
+        }*/
 
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
-        request.setAttribute("user", DaoFactory.getUsersDao().all());
-        request.setAttribute("usersDao",DaoFactory.getUsersDao());
-        /* String userID = request.getParameter("ad.userId");
+            request.setAttribute("user", DaoFactory.getUsersDao().all());
+            request.setAttribute("usersDao", DaoFactory.getUsersDao());
+
+        // String userID = request.getParameter("ad.userId");
 //        long id =Long.parseLong(userID);
 //        String UsernameID = DaoFactory.getUsersDao().findByUserId(id).getUsername();
-        request.setAttribute("user_name", userID);*/
+       // request.setAttribute("user_name", userID);
 
 
 
