@@ -19,6 +19,7 @@ public class ViewProfileServlet extends HttpServlet {
             return;
         }
 
+
         request.setAttribute("ads",DaoFactory.getAdsDao());
         request.setAttribute("pic", DaoFactory.getPicturesDao());
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
