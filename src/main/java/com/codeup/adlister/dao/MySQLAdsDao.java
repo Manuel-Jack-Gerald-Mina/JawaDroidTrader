@@ -167,7 +167,7 @@ public class MySQLAdsDao implements Ads {
             case "AdTitle":
                 query = "SELECT * FROM ads WHERE title LIKE ?";
                 break;
-            case "username":
+            case "Username":
                 query = "SELECT * FROM ads WHERE user_id IN(SELECT id FROM users WHERE username LIKE ?)";
                 break;
             case "Category":

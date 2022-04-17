@@ -23,7 +23,7 @@ public class AdsIndexServlet extends HttpServlet {
         request.setAttribute("searchType", searchType); // only recalling the info to present the data to user
         request.setAttribute("search", search);          // im absolutely certain this can be refactored
 
-        if (search != null) {
+        if (!search.isEmpty()) {
             request.setAttribute("ads", DaoFactory.getAdsDao().Search(searchType, search));
         } else {
             request.setAttribute("ads", DaoFactory.getAdsDao().all());

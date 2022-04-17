@@ -14,8 +14,8 @@
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
 <div class="container">
-    <c:if test="${ads.empty}"></c:if>
-    <h1>Here Are all the ads!</h1>
+    <c:if test="${ads.isEmpty()}"><h1>The list is empty...<br> Nothing in our database compares to your search</h1></c:if>
+
 
     <div class="row" >
         
