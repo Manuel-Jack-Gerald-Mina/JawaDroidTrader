@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -22,12 +23,12 @@
         <h1 id = "welcome_id" >Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
-<c:set var="picture" value="${}">
+
 <%--    profile card --%>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <div class="row position-absolute ">
         <div class="card profile-card  justify-content-center align-items-center">
-            <img src="../asset/Jawa_fullbody.png" width="350" height="600" class="card-img-top" alt="...">
+            <img src="../asset/${pic.findByUserId(sessionScope.user.id).getUrl()}" width="350" height="600" class="card-img-top" alt="...">
 
             <div class="card-body justify-content-center align-items-center">
                 <h5 id ="currentUSer" class="card-title">${sessionScope.user.username}</h5>

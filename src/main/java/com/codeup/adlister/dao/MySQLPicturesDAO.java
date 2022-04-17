@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Picture;
+import com.codeup.adlister.models.user_Picture;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -45,7 +46,9 @@ public class MySQLPicturesDAO implements Pictures {
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setLong(1, id);
-            return extractPicture(stmt.executeQuery()); // need to do more. part 2 go through pictures and identify the picture from its id
+            user_Picture user_picture=extractPictureViaUserId(stmt.executeQuery());
+            return findByPictureId(user_picture.getPicture_id());
+
         } catch (SQLException e) {
             throw new RuntimeException("Error finding a user by Id", e);
         }
@@ -71,7 +74,15 @@ public class MySQLPicturesDAO implements Pictures {
         rs.next();
         return new Picture(
                 rs.getLong("id"),
-                rs.getString("url")
+                rs.getString("picture_url")
+        );
+    }
+
+    private user_Picture extractPictureViaUserId(ResultSet rs) throws SQLException {
+        rs.next();
+        return new user_Picture(
+                rs.getLong("user_id"),
+                rs.getLong("picture_id")
         );
     }
 

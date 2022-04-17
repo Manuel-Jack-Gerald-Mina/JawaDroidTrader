@@ -1,5 +1,7 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,19 +17,7 @@ public class ViewProfileServlet extends HttpServlet {
             return;
         }
 
-
-
-//         request.getAttribute("profile-pic");
-//        request.setAttribute("pic" , request.getAttribute("profile-pic"));
-//
-
-//request.getAttribute("sessionScope..user.username");
-        System.out.println(request.getAttribute("currentUser"));
-
-
-
-
-
+        request.setAttribute("pic", DaoFactory.getPicturesDao());
         request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
 
 
