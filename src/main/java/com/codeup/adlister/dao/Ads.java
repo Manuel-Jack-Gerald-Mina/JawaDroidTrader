@@ -15,5 +15,6 @@ public interface Ads {
     String updateAd(Ad ad);
     Ad findByUserID(long userId);
     List<Ad>findAllByUserID(long userId);
+    List<Ad> Search(String searchType, String TUC);
 
 }

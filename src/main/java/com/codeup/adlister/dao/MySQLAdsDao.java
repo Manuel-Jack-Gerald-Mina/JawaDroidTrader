@@ -161,21 +161,29 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    public List<Ad> searchThroughAds(String searchType, String TUC) { // Title User or Category
+    public List<Ad> Search(String searchType, String TUC) { // Title User or Category
+        String query = "";
         switch (searchType) {
-            case ("AdTitle"): {
-                String query = "SELECT * FROM ads WHERE title LIKE '%?%'";
-            }
-            case ("username"): {
-                String query = "SELECT id FROM users WHERE username LIKE '%?%'";
-            }
-            case ("Category"): {
-                String query = "SELECT id FROM categories WHERE category LIKE '%?%'";
-            }
-            default: {
-                String query = "SELECT * FROM ads WHERE id = ? LIMIT 1";
-            }
+            case "AdTitle":
+                query = "SELECT * FROM ads WHERE title LIKE ?";
+                break;
+            case "username":
+                query = "SELECT * FROM ads WHERE user_id IN(SELECT id FROM users WHERE username LIKE ?)";
+                break;
+            case "Category":
+                query = "SELECT ads.*, adsc.category_id FROM ads JOIN ads_categories AS adsc ON adsc.ads_id = ads.id WHERE category_id IN (SELECT id FROM categories WHERE category LIKE ?)";
+                break;
         }
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, "%"+TUC+"%");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+
     }
 
 }
+
