@@ -20,6 +20,7 @@ public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String searchType = request.getParameter("searchType");
         String search = request.getParameter("search");
+        if(search == null){ search="";}  // sets search to empty if not exists so page can function
         request.setAttribute("searchType", searchType); // only recalling the info to present the data to user
         request.setAttribute("search", search);          // im absolutely certain this can be refactored
 
@@ -30,7 +31,7 @@ public class AdsIndexServlet extends HttpServlet {
         }
         request.setAttribute("user", DaoFactory.getUsersDao().all());
         request.setAttribute("usersDao", DaoFactory.getUsersDao());
-
+        request.setAttribute("categories",DaoFactory.getAdsDao());
         // String userID = request.getParameter("ad.userId");
 //        long id =Long.parseLong(userID);
 //        String UsernameID = DaoFactory.getUsersDao().findByUserId(id).getUsername();

@@ -6,9 +6,9 @@ public class Category {
 
     public Category(){}
 
-    public Category(Long id, String name){
+    public Category(Long id, String category){
         this.id = id;
-        this.category = name;
+        this.category = category;
     }
     public Category(String category){this.category=category;}
 

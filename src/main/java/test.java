@@ -1,5 +1,6 @@
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.codeup.adlister.models.Picture;
 import com.codeup.adlister.models.User;
 
@@ -21,7 +22,7 @@ long test = 2L;
         test successful.
         */
 
-   List<Ad> list = DaoFactory.getAdsDao().Search("AdTitle","rifle"); // test empty with "rrrrr"
+/*   List<Ad> list = DaoFactory.getAdsDao().Search("AdTitle","rifle"); // test empty with "rrrrr"
 
    for(Ad ad: list){
        System.out.println(ad.getTitle());
@@ -33,7 +34,14 @@ long test = 2L;
 
         if(list.isEmpty()){
      System.out.println("none");
- }
-    }
+ }*/
 
+        Ad ad = DaoFactory.getAdsDao().findByAdId(2);
+        List<Category> cats = DaoFactory.getAdsDao().AllCats();
+
+        for (Category cat : cats) {
+            System.out.println(cat.getCategory());
+            System.out.println(cat.getId());
+        }
+    }
 }

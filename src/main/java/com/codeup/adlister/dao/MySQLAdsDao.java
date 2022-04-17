@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -84,6 +85,20 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
+    private List<Category> createCategoriesForAd(ResultSet rs) throws SQLException {
+        List<Category> categories = new ArrayList<>();
+        while (rs.next()) {
+
+            categories.add(new Category(
+
+                    rs.getLong("id"),
+                    rs.getString("category")
+
+            ));
+        }
+        return categories;
+    }
+
     public String updateAd(Ad ad) {
         String query = "UPDATE ads SET title= ?,description = ?, price = ? WHERE id = ?  ";
         try {
@@ -158,6 +173,29 @@ public class MySQLAdsDao implements Ads {
             return extractAd(stmt.executeQuery());
         } catch (SQLException e) {
             throw new RuntimeException("Error finding a user by username", e);
+        }
+    }
+
+    public List<Category> findAllCategories(long adId){
+        String query = "SELECT C.*, adsc.ads_id FROM categories AS C JOIN ads_categories AS adsc ON adsc.category_id = C.id WHERE ads_id IN (SELECT id FROM ads WHERE id = ?)";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            ResultSet rs = stmt.executeQuery();
+            return createCategoriesForAd(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    public List<Category> AllCats(){
+        String query = "SELECT * FROM categories";
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return createCategoriesForAd(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
         }
     }
 

@@ -35,7 +35,8 @@
                     <%--<h5 class="card-title">${param.userbyid}</h5>--%>
 
 
-            <p class="card-text ">Galactic Credits ${ad.price}</p>
+            <p class="card-text ">Galactic Credits ${ad.price}<br>
+                categories: <c:forEach var="cats" items="${categories.findAllCategories(ad.id)}"> ${cats.getCategory()} |</c:forEach></p>
             <a href="/adsInfo?adId=${ad.id}" class="btn btn-dark text-warning rounded"> View this Listing</a>
              <c:if test="${sessionScope.user.id == ad.userId}">
                  <form method="post">

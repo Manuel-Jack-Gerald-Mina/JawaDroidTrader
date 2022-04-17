@@ -43,6 +43,15 @@
             <label for="description">Description</label>
             <textarea id="description" name="description" class="form-control" placeholder="${ad.getDescription()}" ></textarea>
         </div>
+        <div class="form-group row">
+
+            <c:forEach items="${AdsDao.AllCats()}" var="eachCat">
+                <div class="col-3">
+                <input type="checkbox" name="categories" value="${eachCat.getCategory()}"> ${eachCat.getCategory()}
+                </div>
+                    </c:forEach>
+                </div>
+
         <input type="submit" class="btn btn-block btn-primary">
     </form>
 </div>
