@@ -1,6 +1,7 @@
 package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -55,14 +56,14 @@ public class MySQLAdsDao implements Ads {
 
 
     private Ad extractAd(ResultSet rs) throws SQLException {
-            rs.next();
-            return new Ad(
-                    rs.getLong("id"),
-                    rs.getLong("user_id"),
-                    rs.getString("title"),
-                    rs.getString("description"),
-                    rs.getDouble("price")
-            );
+        rs.next();
+        return new Ad(
+                rs.getLong("id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description"),
+                rs.getDouble("price")
+        );
 
 
     }
@@ -83,14 +84,29 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
-    public String updateAd(Ad ad){
+
+    private List<Category> createCategoriesForAd(ResultSet rs) throws SQLException {
+        List<Category> categories = new ArrayList<>();
+        while (rs.next()) {
+
+            categories.add(new Category(
+
+                    rs.getLong("id"),
+                    rs.getString("category")
+
+            ));
+        }
+        return categories;
+    }
+
+    public String updateAd(Ad ad) {
         String query = "UPDATE ads SET title= ?,description = ?, price = ? WHERE id = ?  ";
         try {
-            PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1,ad.getTitle());
-            stmt.setString(2,ad.getDescription());
-            stmt.setDouble(3,ad.getPrice());
-            stmt.setLong(4,ad.getId());
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setDouble(3, ad.getPrice());
+            stmt.setLong(4, ad.getId());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -103,15 +119,15 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Ad findByUserID(long userId) {
 
-            String query = "SELECT * FROM ads WHERE user_id = ? LIMIT 1";
-            try {
-                PreparedStatement stmt = connection.prepareStatement(query);
-                stmt.setLong(1, userId);
-                return extractAd(stmt.executeQuery());
-            } catch (SQLException e) {
-                throw new RuntimeException("Error finding a ad by userId ", e);
-            }
+        String query = "SELECT * FROM ads WHERE user_id = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, userId);
+            return extractAd(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a ad by userId ", e);
         }
+    }
 
     public List<Ad> findAllByUserID(long userId) {
 
@@ -133,15 +149,15 @@ public class MySQLAdsDao implements Ads {
 
         try {
 
-        PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
-        stmt.setLong(1,id);
-        stmt.executeUpdate();
-        ResultSet rs = stmt.getGeneratedKeys();
-        rs.next();
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
 
         } catch (SQLException e) {
 
-            throw new RuntimeException("Error deleting ad",e);
+            throw new RuntimeException("Error deleting ad", e);
 
         }
 
@@ -160,8 +176,52 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
- public List<Ad> searchThroughAds(String searchType, String TitleUserCategory){
+    public List<Category> findAllCategories(long adId){
+        String query = "SELECT C.*, adsc.ads_id FROM categories AS C JOIN ads_categories AS adsc ON adsc.category_id = C.id WHERE ads_id IN (SELECT id FROM ads WHERE id = ?)";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, adId);
+            ResultSet rs = stmt.executeQuery();
+            return createCategoriesForAd(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
 
- }
+    public List<Category> AllCats(){
+        String query = "SELECT * FROM categories";
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            return createCategoriesForAd(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
+    public List<Ad> Search(String searchType, String TUC) { // Title User or Category
+        String query = "";
+        switch (searchType) {
+            case "AdTitle":
+                query = "SELECT * FROM ads WHERE title LIKE ?";
+                break;
+            case "Username":
+                query = "SELECT * FROM ads WHERE user_id IN(SELECT id FROM users WHERE username LIKE ?)";
+                break;
+            case "Category":
+                query = "SELECT ads.*, adsc.category_id FROM ads JOIN ads_categories AS adsc ON adsc.ads_id = ads.id WHERE category_id IN (SELECT id FROM categories WHERE category LIKE ?)";
+                break;
+        }
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, "%"+TUC+"%");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+
+    }
 
 }
+

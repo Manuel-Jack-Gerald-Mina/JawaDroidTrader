@@ -39,6 +39,7 @@ public class EditAdsServlet extends HttpServlet {
         String title =  request.getParameter("title");
         String description = request.getParameter("description");
         String price = request.getParameter("price");
+        String categories =  request.getParameter("categories");
 
 //        System.out.println("from post : "+Adid);
         boolean titleEmpty = title.isEmpty();
