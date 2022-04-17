@@ -5,11 +5,11 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <img src="../../asset/jawa_facial.png" width="50px" height="50px" alt="Jawa.jpg">
-            <a class="navbar-brand" href="../../index.jsp">Jawa Droids Trading co.</a>
+            <a class="navbar-brand" href="../../index.jsp"  style = "font-family:'Orbitron',sans-serif; font-size: 25px; color:#483112">Jawa Droids Trading co.</a>
         </div>
 
         <form action="<c:url value="http://localhost:8080/ads"/>" method="get">
-            <div class="form-group">
+            <div class="form-group d-flex justify-content-center align-item-center" >
                 <label for="search">Search by</label>
                 <select class="form-control" name="searchType" id="search">
                     <option  value="AdId">Ad Id</option>

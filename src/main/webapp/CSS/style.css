@@ -1,7 +1,6 @@
 body{
 background-image: url("/asset/Simplistic-Tatooine.jpg");
     background-position: center;
-
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -14,4 +13,8 @@ background-image: url("/asset/Simplistic-Tatooine.jpg");
 #card2{
     background-color: darkgoldenrod;
 
+}
+h1{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
 }
