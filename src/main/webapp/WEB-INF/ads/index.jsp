@@ -20,8 +20,8 @@
 
         <c:forEach var="ad" items="${ads}">
 
-            <div class="col-3 m-2">
-            <div class=" card   align-content-center" id ="card2"  style="width: 18rem; ">
+            <div class="col-3 m-2 AdCards" id="${ad.id}">
+            <div class=" card  align-content-center" id ="card2"  style="width: 18rem; ">
 
             <img class=" card-img-top" src="../../asset/Adsimg/droid.jpeg" alt="Card image cap">
             <div class="card-body align-content-center">
@@ -60,7 +60,7 @@
         </c:forEach>
     </div>
 
-
+<%--<script src="../../js/search.js"></script>--%>
 </div>
 </body>
 </html>

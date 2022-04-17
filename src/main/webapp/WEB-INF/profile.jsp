@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -18,31 +19,41 @@
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
-    <div class="container float-left mt-5" >
+    <div class="container text-center my-5" >
         <h1 id = "welcome_id" >Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
-<c:set var="picture" value="${}">
+
 <%--    profile card --%>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-    <div class="row position-absolute ">
+    <div class="row ">
         <div class="card profile-card  justify-content-center align-items-center">
-            <img src="../asset/Jawa_fullbody.png" width="350" height="600" class="card-img-top" alt="...">
-
+            <img src="../asset/${pic.findByUserId(sessionScope.user.id).getUrl()}" width="350" height="600" class="card-img-top" alt="...">
             <div class="card-body justify-content-center align-items-center">
                 <h5 id ="currentUSer" class="card-title">${sessionScope.user.username}</h5>
                 <p class="card-text">Hi ! I'm <span>${sessionScope.user.username}</span>, and from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${sessionScope.user.email}</li>
-                <li class="list-group-item"><a href="/changePassword" class="card-link">//change password//</a></li>
-
+                <li class="list-group-item text-center"><a href="/changePassword" class="card-link">change password</a></li>
+                <li class="list-group-item text-center"><a href="/profile/editpic" class="card-link">edit profile picture</a></li>
             </ul>
+            <div class="card-body justify-content-center align-items-center" id="userADList">
+                <h5 class="card-title text-center">My Ads.</h5>
+                <ul class="listOfAd">
+
+                    <c:forEach var="ad" items="${ads.findAllByUserID(sessionScope.user.id)}">
+                        <li><a href="/adsInfo?adId=${ad.userId}">${ad.title}</a></li>
+                    </c:forEach>
+                </ul>
+            </div>
+
             <div class="card-body">
                 <a href="ads/create" class="card-link">Create Ad</a>
                 <a href="/ads" class="card-link">Go to Ads Page</a>
             </div>
         </div>
+        <div class="w-100 m-5"></div>
     </div>
 </div>
 

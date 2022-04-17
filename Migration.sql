@@ -90,7 +90,8 @@ VALUES (1, 'jawaUser/Jawa1.png'),
        (8,'jawaUser/jawa8.png'),
        (9,'jawaUser/jawa9.jpeg'),
        (10,'jawaUser/jawa10.png'),
-       (11,'jawaUser/jawa11.png');
+       (11,'jawaUser/jawa11.png'),
+        (12, 'Jawa_fullbody.png');
 
 
 INSERT INTO user_picture (user_id, picture_id)
