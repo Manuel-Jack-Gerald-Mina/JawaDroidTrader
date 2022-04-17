@@ -7,6 +7,21 @@ let place = ["berthing c-1", "berthing c-2","berthing c-3", "berthing c-4","bert
 origin.innerHTML = place[Math.floor(Math.random() * place.length)];
 
 
+
+// let profilePic=document.getElementById("profilePic")
+// let currentUser = document.getElementById('currentUser').innerHTML
+//
+// //depends on current User, i want to change the profile picture src
+// switch(profilePic) {
+//     case'adlister':
+//         profilePic.setAttribute('src', "../asset/jawaUser/jawa1.png")
+//         break;
+//
+//     case'jawa':
+//         profilePic.setAttribute('src', "../asset/jawaUser/jawa2.jpeg")
+//         break;
+
+
 //
 // ///////////////
 // let profilePic=document.getElementById("profilePic")

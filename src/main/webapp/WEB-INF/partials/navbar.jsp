@@ -12,7 +12,7 @@
             <div class="form-group d-flex justify-content-center align-item-center" >
                 <label for="search">Search by</label>
                 <select class="form-control" name="searchType" id="search">
-                    <option  value="AdId">Ad Id</option>
+                    <%--<option  value="AdId">Ad Id</option>--%>
                     <option  value="AdTitle">Title</option>
                     <option  value="Username">User</option>
                     <option  value="Category">Categories</option>
@@ -20,7 +20,7 @@
 
                     <textarea class="form-control mr-sm-2" name="search" placeholder="search" id="Search_box" rows="1"></textarea>
                 </div>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
         </form>
 
         <%--<form class="form-inline ">

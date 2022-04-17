@@ -8,36 +8,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<%--    css --%>
-    <link rel="stylesheet" href="../../CSS/style.css">
+    <%--    css --%>
+
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing ${selectedAd.title}'s Details"/>
     </jsp:include>
-
     <%--font google--%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Codystar&family=Indie+Flower&family=Orbitron:wght@500&family=Rajdhani&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/style.css">
 </head>
 <body>
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar.jsp"/>
 
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <div class="row">
         <div id="card-id" class="card justify-content-center align-items-center">
             <div class="card-img-top">
-                <img src="../../asset/droid.jpeg" class="  rounded mx-auto d-block" width="75%" height="auto">
+                <img src="../../asset/Adsimg/droid.jpeg" class="  rounded mx-auto d-block" width="75%" height="auto">
             </div>
-            <ul>
-                <li><h5>${selectedAd.price}</h5></li>
-                <li> <p id="ad_user"><a href="adlisterProfile?user=${usersDao.findByUserId(ad.userId).getUsername()}">${usersDao.findByUserId(ad.userId).getUsername()}</a></p></li>
-                <li> <p class="card-text">${selectedAd.description}</p></li>
-            </ul>
+            <div>
+                <ul>
+                    <li><h5> Galactic Credits ${selectedAd.price}</h5></li>
+                    <li><a href="adlisterProfile?user=${selectedAd.userId}">
+                        <button class="btn-warning">View Trader</button>
+                    </a></li>
+                    <li><p class="card-text">Description : ${selectedAd.description}</p></li>
+                </ul>
+            </div>
         </div>
 
     </div>
 </div>
-
 
 
 </body>

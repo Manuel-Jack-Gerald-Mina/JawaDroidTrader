@@ -1,14 +1,47 @@
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Category;
+import com.codeup.adlister.models.Picture;
 import com.codeup.adlister.models.User;
+
+import java.util.List;
 
 public class test {
     public static void main(String[] args) {
 /*
-        Ad ad = DaoFactory.getAdsDao().findByAdId(test);
-        User user = DaoFactory.getAdsDao().deleteAd(ad);
-        System.out.println(user.getUsername());*/
+long test = 2L;
+        Picture pic = DaoFactory.getPicturesDao().findByPictureId(test);
 
+        System.out.println(pic.getUrl()); find pic by id works
+        */
+        /* find by user id
+        long test = 5;
+        Picture pic = DaoFactory.getPicturesDao().findByUserId(test);
+
+        System.out.println(pic.getUrl());
+        test successful.
+        */
+
+/*   List<Ad> list = DaoFactory.getAdsDao().Search("AdTitle","rifle"); // test empty with "rrrrr"
+
+   for(Ad ad: list){
+       System.out.println(ad.getTitle());
+       System.out.println(ad.getPrice());
+       System.out.println(ad.getDescription());
+       System.out.println(ad.getId());
+   } //did exactly what i wanted first try
+
+
+        if(list.isEmpty()){
+     System.out.println("none");
+ }*/
+
+        Ad ad = DaoFactory.getAdsDao().findByAdId(2);
+        List<Category> cats = DaoFactory.getAdsDao().AllCats();
+
+        for (Category cat : cats) {
+            System.out.println(cat.getCategory());
+            System.out.println(cat.getId());
+        }
     }
-
 }

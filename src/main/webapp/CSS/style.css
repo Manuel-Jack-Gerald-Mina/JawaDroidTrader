@@ -1,7 +1,7 @@
 body{
-background-image: url("/asset/Simplistic-Tatooine.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
+
+    background: url("/asset/Simplistic-Tatooine.jpg") no-repeat fixed center;
+
     background-size: cover;
 }
 
@@ -14,7 +14,20 @@ background-image: url("/asset/Simplistic-Tatooine.jpg");
     background-color: darkgoldenrod;
 
 }
+
 h1{
     font-family: 'Orbitron', sans-serif;
     font-weight: bold;
 }
+
+a{color: red;
+
+}
+
+.line{
+    width: 112px;
+    height: 47px;
+    border-bottom: 1px darkgoldenrod;
+    position: relative;
+}
+

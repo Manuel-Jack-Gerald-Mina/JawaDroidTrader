@@ -18,38 +18,38 @@ import static java.lang.Long.parseLong;
 @WebServlet(name = "controllers.AdsIndexServlet", urlPatterns = "/ads")
 public class AdsIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String search = request.getParameter("searchType");
-        String searchInput = request.getParameter("search");
+        String searchType = request.getParameter("searchType");
+        String search = request.getParameter("search");
+        if(search == null){ search="";}  // sets search to empty if not exists so page can function
+        request.setAttribute("searchType", searchType); // only recalling the info to present the data to user
+        request.setAttribute("search", search);          // im absolutely certain this can be refactored
 
-        /* String stringUser_id = request.getParameter("userid");
-        long userid = parseLong(stringUser_id);*/
-/*        if(search != null && searchInput != null) {
-            //adID Title User Category
+        if (!search.isEmpty()) {
+            request.setAttribute("ads", DaoFactory.getAdsDao().Search(searchType, search));
+        } else {
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
-            request.setAttribute("users", DaoFactory.getUsersDao().all());
-        } else {*/
-
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
+        }
         request.setAttribute("user", DaoFactory.getUsersDao().all());
-        request.setAttribute("usersDao",DaoFactory.getUsersDao());
-        /* String userID = request.getParameter("ad.userId");
+        request.setAttribute("usersDao", DaoFactory.getUsersDao());
+        request.setAttribute("categories",DaoFactory.getAdsDao());
+        // String userID = request.getParameter("ad.userId");
 //        long id =Long.parseLong(userID);
 //        String UsernameID = DaoFactory.getUsersDao().findByUserId(id).getUsername();
-        request.setAttribute("user_name", userID);*/
+        // request.setAttribute("user_name", userID);
 
 
 
-            /*request.setAttribute("userbyid", DaoFactory.getUsersDao().findByUserId(userid));*/
-            //}
+        /*request.setAttribute("userbyid", DaoFactory.getUsersDao().findByUserId(userid));*/
+        //}
 
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userID = request.getParameter("userid");
-        System.out.println("this should show up "+ userID);
-        String delete= request.getParameter("delete");
+
+        String delete = request.getParameter("delete"); // delete has a value of ad.id
         long id = parseLong(delete);
 
         DaoFactory.getAdsDao().deleteAd(id);
