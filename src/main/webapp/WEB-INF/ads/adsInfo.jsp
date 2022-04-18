@@ -43,24 +43,12 @@
 <%--    </div>--%>
 <%--</div>--%>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-<<<<<<< HEAD
-    <img src="../../asset/Adsimg/droid.jpeg" class=" rounded mx-auto d-block" width="75%" height="auto">
-    <div id="card" data-tilt data-tilt-reverse="true" data-tilt-glare data-tilt-max-glare="0.4">
-        <div id="content">
-            <h2><strong> Galactic Credits: ${selectedAd.price}</strong></h2>
-                <p class="card-text">Description:<br>
-                    ${selectedAd.description}</p>
-                <a href="adlisterProfile?user=${selectedAd.userId}">
-                    <button class="btn btn-warning btn-sm rounded">
-                        View Trader
-                    </button>
-                </a>
-            </ul>
-<%--=======--%>
+
     <div class="row">
         <div id="card-id" class="card justify-content-center align-items-center">
+          <div id="card" data-tilt data-tilt-reverse="true" data-tilt-glare data-tilt-max-glare="0.4">  
             <div class="card-img-top">
-                <img src="../../asset/${pictures.findByAdId(selectedAd.id)}" alt="${pictures.findByAdId(selectedAd.id)}"  class="rounded mx-auto d-block" width="75%" height="auto">
+                <img src="../../asset/${pictures.findByAdId(selectedAd.id)}" alt="${pictures.findByAdId(selectedAd.id)}" data-tilt data-tilt-reverse="true" data-tilt-glare data-tilt-max-glare="0.4" class="rounded mx-auto d-block" width="75%" height="auto">
             </div>
             <div>
                 <h1 class="text-center">${selectedAd.title}</h1>
@@ -84,7 +72,6 @@
                     <input class="btn btn-warning btn-sm" type="submit" value="Edit">
                 </form>
             </c:if>
-<%-->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7--%>
         </div>
     </div>
 </div>
