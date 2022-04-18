@@ -27,11 +27,18 @@
 <%--    profile card --%>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <div class="row ">
+<<<<<<< HEAD
         <div class="card profile-card  justify-content-center align-items-center" id="card3">
 <%--    <div id="card2">--%>
 <%--        <div id="content">--%>
+=======
+        <div class="card profile-card  justify-content-center align-items-center">
+
+>>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
             <img src="../asset/${pic.findByUserId(sessionScope.user.id).getUrl()}" width="350" height="600" class="card-img-top" alt="...">
+
             <div class="card-body justify-content-center align-items-center">
+<<<<<<< HEAD
                 <h5 id ="currentUSer" class="card-title">${sessionScope.user.username}</h5>
                 <p class="card-text">Hi ! I'm <span>${sessionScope.user.username}</span>, and from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
 
@@ -44,13 +51,19 @@
                <div> <h3 style="text-align: center">${sessionScope.user.email}</h3>
                    <a style="text-align: center" href="/changePassword" class="card-link"><h5>change password</h5></a>
                    <a style="text-align: center" href="/profile/editpic" class="card-link"><h5>edit profile picture</h5></a>
+=======
+
+                <h5 id ="currentUser" class="card-title text-center">${sessionScope.user.username}</h5>
+                <p class="card-text">Hi ! I'm <span>${sessionScope.user.username}</span>, and I'm from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
+
+>>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
             </div>
             <div class="card-body justify-content-center align-items-center" id="userADList">
-                <h5 class="card-title text-center">My Ads.</h5>
+                <h5 class="card-title text-center">My Ads:</h5>
                 <ul class="listOfAd">
 
                     <c:forEach var="ad" items="${ads.findAllByUserID(sessionScope.user.id)}">
-                        <li><a href="/adsInfo?adId=${ad.userId}">${ad.title}</a></li>
+                        <li><a href="/adsInfo?adId=${ad.id}">${ad.title}</a></li>
                     </c:forEach>
                 </ul>
             </div>

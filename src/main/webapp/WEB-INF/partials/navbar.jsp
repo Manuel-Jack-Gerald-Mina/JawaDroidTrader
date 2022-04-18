@@ -5,22 +5,24 @@
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <img src="../../asset/jawa_facial.png" width="50px" height="50px" alt="Jawa.jpg">
-            <a class="navbar-brand" href="../../index.jsp">Jawa Droids Trading co.</a>
+            <a class="navbar-brand" href="../../index.jsp"  style = "font-family:'Orbitron',sans-serif; font-size: 25px; color:#483112">Jawa Droids Trading co.</a>
         </div>
 
         <form action="<c:url value="http://localhost:8080/ads"/>" method="get">
-            <div class="form-group">
-                <label for="search">Search by</label>
-                <select class="form-control" name="searchType" id="search">
+          
+            <div class="form-inline row mt-2">
+                <label for="search"></label>
+                <select class="form-control col-3" name="searchType" id="search">
                     <%--<option  value="AdId">Ad Id</option>--%>
                     <option  value="AdTitle">Title</option>
                     <option  value="Username">User</option>
                     <option  value="Category">Categories</option>
                 </select>
 
-                    <textarea class="form-control mr-sm-2" name="search" placeholder="search" id="Search_box" rows="1"></textarea>
-                </div>
-            <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                    <textarea class="form-control mr-sm-2 col-5" name="search" placeholder="search" id="Search_box" rows="1"></textarea>
+
+            <button class="btn btn-outline-warning my-2 my-sm-0 col-2" type="submit">Search</button>
+            </div>
         </form>
 
         <%--<form class="form-inline ">
@@ -38,16 +40,16 @@
         </form>--%>
 <c:choose>
         <c:when test="${sessionScope.user != null}">
-        <ul class="nav navbar-nav navbar-right">
-            <li> <a href="<c:url value="http://localhost:8080/profile"/>"><c:out value="${sessionScope.user.username}" /></a></li>
-            <li> <a href="<c:url value="http://localhost:8080/logout"/>">Logout</a></li>
-        </ul>
+        <div class="nav navbar-nav">
+             <a href="<c:url value="http://localhost:8080/profile"/>"><c:out value="${sessionScope.user.username}" /></a>
+             <a href="<c:url value="http://localhost:8080/logout"/>">Logout</a>
+        </div>
         </c:when>
 <c:otherwise>
-        <ul class="nav navbar-nav navbar-right">
-            <li> <a href="<c:url value="http://localhost:8080/login"/>">Login</a></li>
-            <li> <a href="<c:url value="http://localhost:8080/register"/>">Sign up</a></li>
-        </ul>
+        <div class="nav navbar-nav">
+            <div><a  href="<c:url value="http://localhost:8080/login"/>">Login</a></div>
+            <div><a  href="<c:url value="http://localhost:8080/register"/>">Sign up</a></div>
+        </div>
 </c:otherwise>
     </c:choose>
 

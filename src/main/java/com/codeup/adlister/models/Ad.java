@@ -4,13 +4,6 @@ public class Ad {
     private long id;
     private long userId;
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     private String title;
     private String description;
@@ -30,6 +23,7 @@ public class Ad {
         this.userId = userId;
         this.title = title;
         this.description = description;
+        this.price = price;
     }
 
     public long getId() {
@@ -63,4 +57,13 @@ public class Ad {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
 }

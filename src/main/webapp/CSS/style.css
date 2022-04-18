@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
 body{
+
     background: url("/asset/Simplistic-Tatooine.jpg") no-repeat fixed center;
+
     background-size: cover;
 }
 
@@ -13,11 +15,13 @@ body{
     background-color: darkgoldenrod;
 
 }
-/*#adPage{
-    background-image: none;
-    background-color: wheat;
-}*/
-a{color: black;
+
+h1{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+}
+
+a{color: red;
 
 }
 
@@ -27,6 +31,7 @@ a{color: black;
     border-bottom: 1px darkgoldenrod;
     position: relative;
 }
+<<<<<<< HEAD
 /*----SearchBar Animation-------*/
 .searchbar{
     height: auto;
@@ -114,3 +119,6 @@ h1{
 }
 
 /*-------------------------------------------*/
+=======
+
+>>>>>>> cddc8e79f130828b316ad077206bc694da8354b7

@@ -7,6 +7,11 @@
     </jsp:include>
     <link rel="icon" type="image/png" href="asset/jawa.png">
     <link rel="stylesheet" href="CSS/style.css">
+
+    <%--font google--%>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Codystar&family=Indie+Flower&family=Orbitron:wght@500&family=Rajdhani&display=swap" rel="stylesheet">
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar2.jsp" />
