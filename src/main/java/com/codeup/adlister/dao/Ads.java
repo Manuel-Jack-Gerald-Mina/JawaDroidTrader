@@ -11,12 +11,23 @@ public interface Ads {
     List<Ad> all();
     // insert a new ad and return the new ad's id
     long insert(Ad ad);
+    //delete
     long deleteAd(long id);
+    //takes in adId returns ad
     Ad findByAdId(long adId);
+    //update ad
     String updateAd(Ad ad);
-    Ad findByUserID(long userId);
+    //returns list of ads by user id
     List<Ad>findAllByUserID(long userId);
+
+    // search the ads/index for the Title, Username, or Category
     List<Ad> Search(String searchType, String TUC);
+    // lists all categories
+    List<Category> AllCats();
+    // update an ad's categories
+    long updateCategories(long adId, String[] categories);
+    // find all categories pertaining to an ad
     List<Category> findAllCategories(long adId);
-     List<Category> AllCats();
+    //find an ad via user id
+    Ad findByUserID(long userId);
 }

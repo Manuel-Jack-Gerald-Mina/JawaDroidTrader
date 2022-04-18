@@ -2,16 +2,12 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-import static java.lang.Double.parseDouble;
-import static java.lang.Long.parseLong;
 
 @WebServlet(name = "controllers.EditAdsServlet", urlPatterns = "/ads/edit")
 public class EditAdsServlet extends HttpServlet {
@@ -39,19 +35,16 @@ public class EditAdsServlet extends HttpServlet {
         String title =  request.getParameter("title");
         String description = request.getParameter("description");
         String price = request.getParameter("price");
-        String categories =  request.getParameter("categories");
+        String[] categories =  request.getParameterValues("categories");
 
-//        System.out.println("from post : "+Adid);
+        /*for (String category: categories) {
+            System.out.println("from post : "+category);
+        }*/
+
+
         boolean titleEmpty = title.isEmpty();
         boolean descriptionEmpty = description.isEmpty();
         boolean priceEmpty = price.isEmpty();
-
-//        if (titleEmpty) {
-//            response.sendRedirect("/ads/edit?attempt=1");
-//        } else if (descriptionEmpty) {
-//            response.sendRedirect("/ads/edit?attempt=2");
-//        } else
-//        {
 
         if (titleEmpty) {
             title = ad.getTitle();
@@ -65,7 +58,6 @@ public class EditAdsServlet extends HttpServlet {
         } else{
             newPrice = Double.parseDouble(request.getParameter("price")); }
 
-
         Ad updatedAd = new Ad(
                     Long.parseLong(Adid),
                     Long.parseLong(userId), // need to make a parameter on page to get session.user
@@ -74,6 +66,7 @@ public class EditAdsServlet extends HttpServlet {
                     newPrice
             );
             DaoFactory.getAdsDao().updateAd(updatedAd);
+            DaoFactory.getAdsDao().updateCategories(updatedAd.getId(), categories);
             response.sendRedirect("/ads");
 //        }
     }
