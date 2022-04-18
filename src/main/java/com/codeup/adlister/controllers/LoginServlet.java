@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
@@ -39,7 +40,8 @@ public class LoginServlet extends HttpServlet {
         boolean validAttempt = Password.check(password, user.getPassword() );
 
         if (validAttempt) {
-            request.getSession().setAttribute("user", user);
+            HttpSession session =request.getSession(); // session cookie was incorrect. fixed
+            session.setAttribute("user", user);
             response.sendRedirect("/profile");
 
         } else {

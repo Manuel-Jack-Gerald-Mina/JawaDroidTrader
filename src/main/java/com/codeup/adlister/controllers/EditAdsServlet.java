@@ -2,6 +2,7 @@ package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,17 +14,11 @@ import java.io.IOException;
 public class EditAdsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String Adid = request.getParameter("EditAdId");
-
-//        System.out.println("from get: "+Adid);
-
-        request.setAttribute("adId",Adid); // from index grabbing the hidden parameter
-
-        request.setAttribute("AdsDao" ,DaoFactory.getAdsDao());
-
+        request.setAttribute("adId", Adid); // from index grabbing the hidden parameter
+        request.setAttribute("AdsDao", DaoFactory.getAdsDao());
         String attempt = request.getParameter("attempt");
-
         request.setAttribute("failed", attempt);
-
+        request.setAttribute("adPictures", DaoFactory.getPicturesDao().allAds());
         request.getRequestDispatcher("/WEB-INF/ads/editAds.jsp")
                 .forward(request, response);
     }
@@ -32,15 +27,12 @@ public class EditAdsServlet extends HttpServlet {
         String Adid = request.getParameter("adId");
         Ad ad = DaoFactory.getAdsDao().findByAdId(Long.parseLong(Adid));
         String userId = request.getParameter("userId"); // need to make a parameter on page to get session.user
-        String title =  request.getParameter("title");
+        String title = request.getParameter("title");
         String description = request.getParameter("description");
         String price = request.getParameter("price");
-        String[] categories =  request.getParameterValues("categories");
-
-        /*for (String category: categories) {
-            System.out.println("from post : "+category);
-        }*/
-
+        String[] categories = request.getParameterValues("categories");
+        String picId = request.getParameter("picId");
+        long pictureId = Long.parseLong(picId);
 
         boolean titleEmpty = title.isEmpty();
         boolean descriptionEmpty = description.isEmpty();
@@ -55,19 +47,23 @@ public class EditAdsServlet extends HttpServlet {
         double newPrice;
         if (priceEmpty) {
             newPrice = ad.getPrice();
-        } else{
-            newPrice = Double.parseDouble(request.getParameter("price")); }
+        } else {
+            newPrice = Double.parseDouble(request.getParameter("price"));
+        }
 
         Ad updatedAd = new Ad(
-                    Long.parseLong(Adid),
-                    Long.parseLong(userId), // need to make a parameter on page to get session.user
-                    title,
-                    description,
-                    newPrice
-            );
-            DaoFactory.getAdsDao().updateAd(updatedAd);
+                Long.parseLong(Adid),
+                Long.parseLong(userId), // need to make a parameter on page to get session.user
+                title,
+                description,
+                newPrice
+        );
+        DaoFactory.getAdsDao().updateAd(updatedAd);
+        if (categories != null) {
             DaoFactory.getAdsDao().updateCategories(updatedAd.getId(), categories);
-            response.sendRedirect("/ads");
-//        }
+        }
+        DaoFactory.getPicturesDao().changeAdPicture(updatedAd.getId(), pictureId);
+        response.sendRedirect("/ads");
     }
+
 }

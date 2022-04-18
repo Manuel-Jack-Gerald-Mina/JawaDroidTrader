@@ -25,7 +25,7 @@
             <div class="col-3 m-2 AdCards" id="${ad.id}">
             <div class=" card  align-content-center" id ="card2"  style="width: 18rem; ">
 
-            <img class=" card-img-top" src="../../asset/Adsimg/droid.jpeg" alt="Card image cap">
+            <img class=" card-img-top" src="../../asset/${pictures.findByAdId(ad.id)}" alt="${pictures.findByAdId(ad.id)}" width="286" height="350">
             <div class="card-body align-content-center">
             <h4 class="card-title  ">${ad.title}</h4><br>
 

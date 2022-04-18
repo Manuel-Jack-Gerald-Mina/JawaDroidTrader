@@ -1,16 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mina.mcgonigal
-  Date: 4/12/22
-  Time: 11:27 AM
-  To change this template use File | Settings | File Templates.
---%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <link href="../asset/jawa_facial.png" rel="icon" type="image/x-icon" />
     <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Your Profile" />
+        <jsp:param name="title" value="${user_id.getUsername()}'s Profile" />
     </jsp:include>
 
     <%--    bootstrap --%>
@@ -25,29 +20,29 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-    <div class="row position-absolute ">
+    <div class="row ">
         <div class="card profile-card  justify-content-center align-items-center">
-            <img id = "profilePic" src="../asset/jawa.png" class="card-img-top" alt="...">
+            <img id="profilePic" src="../../asset/${pictures.findByUserId(user_id.getId()).getUrl()}" class="card-img-top" alt="${pictures.findByUserId(user_id.getId()).getUrl()}" width="350" height="600">
             <div class="card-body justify-content-center align-items-center">
-                <h5 class="card-title">${user_id.getUsername()}</h5>
-                <p class="card-text">Hi ! I'm ${user_id.getUsername()}, and from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
+                <h5 class="card-title text-center">${user_id.getUsername()}</h5>
+                <p class="card-text">Hi ! I'm ${user_id.getUsername()}, and I'm from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
             </div>
             <div class="card-body justify-content-center align-items-center" id="userADList">
-                <h5 class="card-title">My Ads.</h5>
+                <h5 class="card-title">My Ads:</h5>
                 <ul class="listOfAd">
 
                 <c:forEach var="ad" items="${ads}">
-                    <li><a href="/adsInfo?adId=${ad.userId}">${ad.title}</a></li>
+                    <li><a href="/adsInfo?adId=${ad.id}">${ad.title}</a></li>
                 </c:forEach>
                 </ul>
             </div>
 
             <div class="card-body">
-                <a href="ads/create" class="card-link">Create Ad</a>
+                <%--<a href="ads/create" class="card-link">Create Ad</a>--%>
                 <a href="ads" class="card-link">Go to Ads Page</a>
             </div>
         </div>
