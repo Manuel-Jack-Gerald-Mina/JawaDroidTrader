@@ -17,7 +17,7 @@
     <jsp:include page="/WEB-INF/partials/navbar2.jsp" />
 <%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
     <div class="container">
-        <h2>Please Log In</h2>
+        <h1>Please Log In</h1>
 
             <c:if test="${failed == '1'}">
                 <div> <p>incorrect username or password</p></div>

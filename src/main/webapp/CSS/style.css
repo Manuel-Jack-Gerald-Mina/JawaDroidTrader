@@ -75,7 +75,7 @@ h1{
 
 @keyframes animated-text{
     from{width: 0;}
-    to{width: 12em;}
+    to{width: 12.5em;}
 }
 
 /* cursor animations */
@@ -84,8 +84,8 @@ h1{
     from{border-right-color: rgba(9, 0, 0, 0.7);}
     to{border-right-color: transparent;}
 }
-/*---------------AdInfo-------------------------*/
-#card,.profile-card{
+/*---------------Cards Animation-------------------------*/
+#card{
     font-size: 1.5em;
     border-radius:.5em;
     padding: 1em;
@@ -94,4 +94,22 @@ h1{
     background: hsla(0,0%,50%,0.5) ;
     backdrop-filter: blur(.7em);
 }
-
+#card2{
+    margin-left: 7em;
+    border-radius:.5em;
+    background: hsla(0,0%,50%,0.5) ;
+    backdrop-filter: blur(.7em);
+    transform-origin: 65% 75%;
+    transition: transform 1s, filter .5s ease-out;
+}
+#card2:hover{
+    transform: scale(1.06);
+    cursor: none;
+}
+#card3{
+    margin-left: 7em;
+    border-radius:.5em;
+    background: hsla(0,0%,50%,0.5) ;
+    backdrop-filter: blur(.7em);
+}
+/*-------------------------------------------*/

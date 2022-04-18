@@ -15,7 +15,7 @@
     <jsp:include page="partials/navbar2.jsp" />
     <div class="container">
 
-        <h2>Please fill in your information.</h2>
+        <h1>Fill in your info.</h1>
         <form action="/register" method="post">
             <div class="form-group">
                 <label for="username">Username</label>

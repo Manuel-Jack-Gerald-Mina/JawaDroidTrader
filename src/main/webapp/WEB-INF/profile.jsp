@@ -27,17 +27,24 @@
 <%--    profile card --%>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <div class="row ">
-        <div class="card profile-card  justify-content-center align-items-center">
+        <div class="card profile-card  justify-content-center align-items-center" id="card3">
+<%--    <div id="card2">--%>
+<%--        <div id="content">--%>
             <img src="../asset/${pic.findByUserId(sessionScope.user.id).getUrl()}" width="350" height="600" class="card-img-top" alt="...">
             <div class="card-body justify-content-center align-items-center">
                 <h5 id ="currentUSer" class="card-title">${sessionScope.user.username}</h5>
                 <p class="card-text">Hi ! I'm <span>${sessionScope.user.username}</span>, and from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
+
+<%--            <ul class="list-group list-group-flush">--%>
+<%--                <li class="list-group-item">${sessionScope.user.email}</li>--%>
+<%--                <li class="list-group-item text-center"><a href="/changePassword" class="card-link">change password</a></li>--%>
+<%--                <li class="list-group-item text-center"><a href="/profile/editpic" class="card-link">edit profile picture</a></li>--%>
+<%--            </ul>--%>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">${sessionScope.user.email}</li>
-                <li class="list-group-item text-center"><a href="/changePassword" class="card-link">change password</a></li>
-                <li class="list-group-item text-center"><a href="/profile/editpic" class="card-link">edit profile picture</a></li>
-            </ul>
+               <div> <h3 style="text-align: center">${sessionScope.user.email}</h3>
+                   <a style="text-align: center" href="/changePassword" class="card-link"><h5>change password</h5></a>
+                   <a style="text-align: center" href="/profile/editpic" class="card-link"><h5>edit profile picture</h5></a>
+            </div>
             <div class="card-body justify-content-center align-items-center" id="userADList">
                 <h5 class="card-title text-center">My Ads.</h5>
                 <ul class="listOfAd">

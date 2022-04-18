@@ -15,14 +15,14 @@
     <link href="asset/jawa.png" rel="icon" type="image/x-icon" />
     <%--    bootstrap --%>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/style.css">
 
 </head>
 <body>
-
 <jsp:include page="partials/navbar2.jsp" />
 <div class="container">
 
-    <h1>Enter your new password.</h1>
+    <h2>Enter your new password.</h2>
 
     <form action="/changePassword" method="post">
         <c:choose>

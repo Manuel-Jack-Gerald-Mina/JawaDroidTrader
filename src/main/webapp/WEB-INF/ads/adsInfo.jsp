@@ -39,13 +39,13 @@
 <%--</div>--%>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <img src="../../asset/Adsimg/droid.jpeg" class=" rounded mx-auto d-block" width="75%" height="auto">
-    <div id="card">
+    <div id="card" data-tilt data-tilt-reset="false" data-tilt-reverse="true" data-tilt-full-page-listening>
         <div id="content">
             <h2><strong> Galactic Credits: ${selectedAd.price}</strong></h2>
                 <p class="card-text">Description:<br>
                     ${selectedAd.description}</p>
                 <a href="adlisterProfile?user=${selectedAd.userId}">
-                    <button class="btn-success">
+                    <button class="btn btn-warning btn-sm rounded">
                         View Trader
                     </button>
                 </a>
@@ -54,7 +54,7 @@
     </div>
 </div>
 
-
+<script type="text/javascript" src="js/vanilla-tilt.js"></script>
 
 </body>
 </html>
