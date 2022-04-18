@@ -1,9 +1,8 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
+import com.codeup.adlister.util.Password;
 import com.mysql.cj.jdbc.Driver;
-import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -28,9 +27,9 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public List<User> all() {
-        PreparedStatement stmt = null;
+
         try {
-            stmt = connection.prepareStatement("SELECT * FROM users");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM users");
             ResultSet rs = stmt.executeQuery();
             return createUsersFromResults(rs);
         } catch (SQLException e) {
@@ -40,8 +39,9 @@ public class MySQLUsersDao implements Users {
     @Override
     public User findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
+        PreparedStatement stmt = null;
         try {
-            PreparedStatement stmt = connection.prepareStatement(query);
+             stmt = connection.prepareStatement(query);
             stmt.setString(1, username);
             return extractUser(stmt.executeQuery());
         } catch (SQLException e) {
@@ -50,10 +50,22 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
+    public User findByUserId(long id) {
+        String query = "SELECT * FROM users WHERE id = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setLong(1, id);
+            return extractUser(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by Id", e);
+        }
+    }
+
+    @Override
     public Long insert(User user) {
 
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
-        String hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        String hash = Password.hash(user.getPassword());
         try {
 
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -70,9 +82,7 @@ public class MySQLUsersDao implements Users {
     }
 
     private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
-            return null;
-        }
+        rs.next();
         return new User(
                 rs.getLong("id"),
                 rs.getString("username"),
@@ -83,8 +93,28 @@ public class MySQLUsersDao implements Users {
     private List<User> createUsersFromResults(ResultSet rs) throws SQLException {
         List<User> users = new ArrayList<>();
         while (rs.next()) {
-            users.add(extractUser(rs));
+            users.add(new User(
+                    rs.getLong("id"),
+                    rs.getString("username"),
+                    rs.getString("email"),
+                    rs.getString("password")
+            ));
         }
         return users;
     }
+    public String updatePassword(User user) {
+        String query = "UPDATE users SET password = ? WHERE username = ? ";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1,user.getPassword());
+            stmt.setString(2, user.getUsername());
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating password",e);
+        }
+        return user.getPassword();
+    }
+
 }

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+body{
+
+    background: url("/asset/Simplistic-Tatooine.jpg") no-repeat fixed center;
+
+    background-size: cover;
+}
+
+.profile-card{
+    border : 2px solid darkgoldenrod;
+}
+
+
+#card2{
+    background-color: darkgoldenrod;
+
+}
+
+h1{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+}
+
+a{color: red;
+
+}
+
+.line{
+    width: 112px;
+    height: 47px;
+    border-bottom: 1px darkgoldenrod;
+    position: relative;
+}
+<<<<<<< HEAD
+/*----SearchBar Animation-------*/
+.searchbar{
+    height: auto;
+    background: hsl(0, 0%, 100%,0);
+    backdrop-filter: blur(10em);
+    border-radius: .5em;
+    padding: 1em;
+    margin-right: 14em;
+}
+.search_input{
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    transition: 0.9s linear;
+    text-decoration-color: black;
+}
+.searchbar:hover > .search_input{
+    width: 8em;
+    /*caret-color:red;*/
+    transition: .2s linear;
+}
+/*--------Light Bleed hover----------------*/
+a:hover{
+    color: white;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.7)) drop-shadow(0 0 5px rgba(255,255,255,0.7)) drop-shadow(0 0 15px rgba(255,255,255,0.7));
+text-decoration: none;}
+/*-----------------Title animation--------------------*/
+h1{
+    margin-left: 20em;
+    border-right: solid 5px rgba(255, 0, 0, 0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 28px;
+    color: rgba(9, 0, 0, 0.7);
+}
+
+/* Animation */
+h1{
+    animation: animated-text 4s linear 1s 1 normal both,
+    animated-cursor 600ms linear infinite;
+}
+
+/* text animation */
+
+@keyframes animated-text{
+    from{width: 0;}
+    to{width: 12.5em;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+    from{border-right-color: rgba(9, 0, 0, 0.7);}
+    to{border-right-color: transparent;}
+}
+/*---------------Cards Animation-------------------------*/
+#card{
+    font-size: 1.5em;
+    /*border-radius:.5em;*/
+    padding: 1em;
+    height: 100%;
+    width: 50%;
+    background: hsla(0,0%,50%,0.5) ;
+    backdrop-filter: blur(.7em);
+}
+#card2{
+    margin-left: 7em;
+    border-radius:.5em;
+    background: hsla(0,0%,50%,0.5) ;
+    backdrop-filter: blur(.7em);
+    transform-origin: 65% 75%;
+    transition: transform 1s, filter .5s ease-out;
+}
+#card2:hover{
+    transform: scale(1.06);
+    cursor: none;
+}
+#card3{
+    margin-right: 7em;
+    border-radius:.5em;
+    background: hsla(0,0%,50%,0.5) ;
+    backdrop-filter: blur(.7em);
+}
+
+/*-------------------------------------------*/
+=======
+
+>>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
