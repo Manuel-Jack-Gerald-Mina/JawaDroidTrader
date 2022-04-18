@@ -17,7 +17,7 @@
 
 </head>
 <body>
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/navbar2.jsp" />
 
     <div class="container text-center my-5" >
         <h1 id = "welcome_id" >Welcome, ${sessionScope.user.username}!</h1>

@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<jsp:include page="partials/navbar.jsp" />
+<jsp:include page="partials/navbar2.jsp" />
 <div class="container">
 
     <h1>Enter your new password.</h1>

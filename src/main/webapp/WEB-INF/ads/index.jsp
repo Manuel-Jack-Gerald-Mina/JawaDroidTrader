@@ -11,7 +11,7 @@
     <link href="../../asset/jawa_facial.png" rel="icon" type="image/x-icon" />
 </head>
 <body id="adPage">
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<jsp:include page="/WEB-INF/partials/navbar2.jsp" />
 
 <div class="container">
     <h1>Here Are all the ads!</h1>

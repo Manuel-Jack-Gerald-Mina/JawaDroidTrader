@@ -11,18 +11,16 @@
     <link rel ="stylesheet" href="../CSS/style.css" >
     <link href="../asset/jawa_facial.png" rel="icon" type="image/x-icon" />
 
-   
-
 
 </head>
 <body id="logIn">
-    <jsp:include page="/WEB-INF/partials/navbar.jsp" />
+    <jsp:include page="/WEB-INF/partials/navbar2.jsp" />
 <%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
     <div class="container">
-        <h1>Please Log In</h1>
+        <h2>Please Log In</h2>
 
             <c:if test="${failed == '1'}">
-        <div> incorrect username or password</div>
+                <div> <p>incorrect username or password</p></div>
             </c:if>
         <form action="login" method="POST">
             <div class="form-group">
