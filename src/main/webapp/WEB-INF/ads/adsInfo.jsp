@@ -31,7 +31,7 @@
 
                     <li><h5> Price in Galactic Credits:      ${selectedAd.price}</h5></li>
                     <li><a href="adlisterProfile?user=${selectedAd.userId}">
-                        <button class="btn-warning">View ${DaoFactory.getUsersDao().findByUserId(selectedAd.userId).getUsername()}'s profile</button>
+                        <button class="btn-warning">View ${user.getUsername()}'s profile</button>
                     </a></li>
                     <li><p class="card-text">Description : ${selectedAd.description}</p></li>
                 </ul>
