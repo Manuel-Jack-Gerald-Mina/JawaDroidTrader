@@ -1,5 +1,4 @@
 package com.codeup.adlister.controllers;
-
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
@@ -31,6 +30,13 @@ public class LoginServlet extends HttpServlet {
         User user = DaoFactory.getUsersDao().findByUsername(username);
 
         if (user == null || password == null) {
+//
+//            PrintWriter out =response.getWriter();
+//            out.println("<script>");
+//            out.println("alert('Please make sure to put username and password')");
+//            out.println("</script>");
+
+
             response.sendRedirect("/login");
             return;
         }
@@ -45,9 +51,15 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
 
         } else {
+//            PrintWriter out = response.getWriter();
+//            out.println("<script>");
+//            out.println("alert('Please put correct user name and password')");
+//            out.println("</script>");
 
             response.sendRedirect("/login?attempt=1");
         }
+
+
 
 
 

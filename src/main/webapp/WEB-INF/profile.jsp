@@ -28,10 +28,14 @@
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <div class="row ">
         <div class="card profile-card  justify-content-center align-items-center">
+
             <img src="../asset/${pic.findByUserId(sessionScope.user.id).getUrl()}" width="350" height="600" class="card-img-top" alt="...">
+
             <div class="card-body justify-content-center align-items-center">
-                <h5 id ="currentUSer" class="card-title text-center">${sessionScope.user.username}</h5>
+
+                <h5 id ="currentUser" class="card-title text-center">${sessionScope.user.username}</h5>
                 <p class="card-text">Hi ! I'm <span>${sessionScope.user.username}</span>, and I'm from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
+
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">${sessionScope.user.email}</li>

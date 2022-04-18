@@ -11,7 +11,10 @@
     <link rel ="stylesheet" href="../CSS/style.css" >
     <link href="../asset/jawa_facial.png" rel="icon" type="image/x-icon" />
 
-   
+    <%--font google--%>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Codystar&family=Indie+Flower&family=Orbitron:wght@500&family=Rajdhani&display=swap" rel="stylesheet">
 
 
 </head>
@@ -19,12 +22,12 @@
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 <%--    <jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
     <div class="container">
-        <h1>Please Log In</h1>
+        <h1 style="font-family: 'Orbitron', sans-serif">Please Log In</h1>
 
             <c:if test="${failed == '1'}">
-        <div> incorrect username or password</div>
+        <div style="font-family:'Codystar',cursive; color: red;font-size: 25px"> Incorrect username or password. Please try again.</div>
             </c:if>
-        <form action="login" method="POST">
+        <form id= "loginForm" action="login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input id="username" name="username" class="form-control" type="text">
@@ -33,7 +36,9 @@
                 <label for="password">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
+
             <input type="submit" class="btn btn-warning btn-block" value="Log In">
+
         </form>
     </div>
 <%--    bootstrap--%>

@@ -1,5 +1,7 @@
 body{
+
     background: url("/asset/Simplistic-Tatooine.jpg") no-repeat fixed center;
+
     background-size: cover;
 }
 
@@ -12,11 +14,13 @@ body{
     background-color: darkgoldenrod;
 
 }
-/*#adPage{
-    background-image: none;
-    background-color: wheat;
-}*/
-a{color: black;
+
+h1{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+}
+
+a{color: red;
 
 }
 
@@ -26,3 +30,4 @@ a{color: black;
     border-bottom: 1px darkgoldenrod;
     position: relative;
 }
+
