@@ -21,13 +21,27 @@
                 </c:when>
             </c:choose>
             <div class="form-group">
+                <input hidden name="userId" value="${sessionScope.user.id}">
                 <label for="title">Title</label>
                 <input id="title" name="title" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+                <label for="price">Price(in galactic credits)</label>
+                <input type="number" id="price" name="price" class="form-control" step="0.01" placeholder="0.00" />
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
+            <div class="form-group row">
+
+                <c:forEach items="${AdsDao.AllCats()}" var="eachCat">
+                    <div class="col-3">
+                        <input type="checkbox" name="categories" value="${eachCat.getCategory()}"> ${eachCat.getCategory()}
+                    </div>
+                </c:forEach>
+            </div>
+
             <input type="submit" class="btn btn-block btn-warning">
         </form>
     </div>

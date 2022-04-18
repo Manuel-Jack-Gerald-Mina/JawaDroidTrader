@@ -17,6 +17,7 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+        request.setAttribute("AdsDao" ,DaoFactory.getAdsDao());
         String attempt = request.getParameter("attempt");
         request.setAttribute("failed", attempt);
 
@@ -25,6 +26,7 @@ public class CreateAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String[] categories =  request.getParameterValues("categories");
 
         boolean titleEmpty = request.getParameter("title").isEmpty();
         boolean descriptionEmpty = request.getParameter("description").isEmpty();
@@ -39,7 +41,10 @@ public class CreateAdServlet extends HttpServlet {
                 request.getParameter("description"),
                 Double.parseDouble(request.getParameter("price"))
         );
-        DaoFactory.getAdsDao().insert(ad);
+
+        long ad_id =DaoFactory.getAdsDao().insert(ad);
+
+        DaoFactory.getAdsDao().updateCategories(ad_id,categories);
         response.sendRedirect("/ads");
     }
     }

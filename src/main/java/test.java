@@ -37,8 +37,8 @@ long test = 2L;
  }*/
 
 //        Ad ad = DaoFactory.getAdsDao().findByAdId(1);
-//        String[] categories = new String[]{"Armor","Droid","Live Creature"};
-//        DaoFactory.getAdsDao().updateCategories(1,categories);
+        String[] categories = new String[]{"Armor","Droid","Live Creature"};
+        DaoFactory.getAdsDao().updateCategories(20,categories);
 
     }
 }

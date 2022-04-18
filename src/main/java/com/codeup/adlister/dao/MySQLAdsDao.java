@@ -112,7 +112,7 @@ public class MySQLAdsDao implements Ads {
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
         } catch (SQLException e) {
-            throw new RuntimeException("Error editing user", e);
+            throw new RuntimeException("Error updating the ad", e);
         }
         return ad.getTitle();
     }
@@ -120,8 +120,8 @@ public class MySQLAdsDao implements Ads {
     //add function call to update categories via the provided list.
     public long updateCategories(long adId, String[] categories) {
         String clear = "DELETE FROM ads_categories WHERE ads_id= ?";
-        String query = "INSERT INTO ads_categories (ads_id, category_id) VALUES(?, ?)";
         String categrab = "SELECT * FROM categories WHERE category = ?";
+        String query = "INSERT INTO ads_categories (ads_id, category_id) VALUES(?, ?)";
         try {
             PreparedStatement stmt1 = connection.prepareStatement(clear);
             stmt1.setLong(1, adId);
@@ -149,7 +149,7 @@ public class MySQLAdsDao implements Ads {
                 stmt3.setLong(2, cat_id);
                 stmt3.execute();
             } catch (SQLException e) {
-                throw new RuntimeException("Error finalizing category update", e);
+                throw new RuntimeException("Error finalizing category", e);
             }
 
         }
