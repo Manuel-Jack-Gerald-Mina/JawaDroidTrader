@@ -39,7 +39,7 @@
 <%--</div>--%>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <img src="../../asset/Adsimg/droid.jpeg" class=" rounded mx-auto d-block" width="75%" height="auto">
-    <div id="card" data-tilt data-tilt-reset="false" data-tilt-reverse="true" data-tilt-full-page-listening>
+    <div id="card" data-tilt data-tilt-reverse="true" data-tilt-glare data-tilt-max-glare="0.4">
         <div id="content">
             <h2><strong> Galactic Credits: ${selectedAd.price}</strong></h2>
                 <p class="card-text">Description:<br>

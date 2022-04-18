@@ -43,7 +43,7 @@
         </c:when>
 <c:otherwise>
         <ul class="nav navbar-nav navbar-right">
-<%--            <li> <a href="<c:url value="http://localhost:8080/login"/>">Login</a></li>--%>
+            <li> <a href="<c:url value="http://localhost:8080/login"/>">Login</a></li>
             <li> <a href="<c:url value="http://localhost:8080/register"/>">Sign up</a></li>
         </ul>
 </c:otherwise>

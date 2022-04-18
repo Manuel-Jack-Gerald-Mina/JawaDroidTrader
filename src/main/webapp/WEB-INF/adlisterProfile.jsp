@@ -29,8 +29,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-    <div class="row position-absolute ">
-        <div class="card profile-card  justify-content-center align-items-center">
+    <div class="row">
+        <div class="card profile-card  justify-content-center align-items-center" id="card3">
             <img id = "profilePic" src="../asset/jawa.png" class="card-img-top" alt="...">
             <div class="card-body justify-content-center align-items-center">
                 <h5 class="card-title">${user_id.getUsername()}</h5>

@@ -87,7 +87,7 @@ h1{
 /*---------------Cards Animation-------------------------*/
 #card{
     font-size: 1.5em;
-    border-radius:.5em;
+    /*border-radius:.5em;*/
     padding: 1em;
     height: 100%;
     width: 50%;
@@ -107,9 +107,10 @@ h1{
     cursor: none;
 }
 #card3{
-    margin-left: 7em;
+    margin-right: 7em;
     border-radius:.5em;
     background: hsla(0,0%,50%,0.5) ;
     backdrop-filter: blur(.7em);
 }
+
 /*-------------------------------------------*/

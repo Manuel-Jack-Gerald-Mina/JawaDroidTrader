@@ -17,7 +17,7 @@
     <c:choose>
         <c:when test="${sessionScope.user != null}">
 
-                <a href="profile"><c:out value="${sessionScope.user.username}" /></a><br>
+<%--                <a href="profile"><c:out value="${sessionScope.user.username}" /></a><br>--%>
 <%--                <a href="logout">Logout</a><br>--%>
 
         </c:when>

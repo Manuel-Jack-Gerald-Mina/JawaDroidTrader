@@ -14,7 +14,7 @@
 <jsp:include page="/WEB-INF/partials/navbar2.jsp" />
 
 <div class="container">
-    <h1>Here Are all the ads!</h1>
+    <h1>Listing for all Ads!</h1>
 
     <div class="row" >
 
