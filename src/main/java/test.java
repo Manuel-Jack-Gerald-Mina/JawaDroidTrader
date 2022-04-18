@@ -36,12 +36,16 @@ long test = 2L;
      System.out.println("none");
  }*/
 
-        Ad ad = DaoFactory.getAdsDao().findByAdId(2);
-        List<Category> cats = DaoFactory.getAdsDao().AllCats();
+//        Ad ad = DaoFactory.getAdsDao().findByAdId(1);
+//        String[] categories = new String[]{"Armor","Droid","Live Creature"};
+//        DaoFactory.getAdsDao().updateCategories(20,categories);
 
-        for (Category cat : cats) {
-            System.out.println(cat.getCategory());
-            System.out.println(cat.getId());
+        List<Picture> pix =DaoFactory.getPicturesDao().allAds();
+        for (Picture pic: pix
+             ) {
+            System.out.println(pic.getUrl());
         }
+
+//        DaoFactory.getPicturesDao().changeAdPicture(2,2);
     }
 }

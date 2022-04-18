@@ -20,18 +20,21 @@ public class AdInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String adInfo = request.getParameter("adId");
         long adId= parseLong(adInfo);
-
-
-        System.out.println(request.getSession().getAttribute("user"));
-//        String ad_user = request.getParameter("ad");
+        request.setAttribute("pictures",DaoFactory.getPicturesDao());
 
         Ad currentAd = DaoFactory.getAdsDao().findByAdId(adId);
         request.setAttribute("selectedAd", currentAd);
+        request.setAttribute("user", DaoFactory.getUsersDao().findByUserId(currentAd.getUserId()));
         request.getRequestDispatcher("/WEB-INF/ads/adsInfo.jsp").forward(request,response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String delete = request.getParameter("delete"); // delete has a value of ad.id
+        long id = parseLong(delete);
+
+        DaoFactory.getAdsDao().deleteAd(id);
+        response.sendRedirect("/profile");
     }
 }
 

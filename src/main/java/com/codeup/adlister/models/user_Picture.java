@@ -1,5 +1,7 @@
 package com.codeup.adlister.models;
 
+
+//want to change name for less confusion . will get to it one day.
 public class user_Picture {
     private long user_id;
     private long picture_id;

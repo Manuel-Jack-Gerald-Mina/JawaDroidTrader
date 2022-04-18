@@ -29,9 +29,12 @@ public class AdsIndexServlet extends HttpServlet {
         } else {
             request.setAttribute("ads", DaoFactory.getAdsDao().all());
         }
+
         request.setAttribute("user", DaoFactory.getUsersDao().all());
         request.setAttribute("usersDao", DaoFactory.getUsersDao());
         request.setAttribute("categories",DaoFactory.getAdsDao());
+        request.setAttribute("pictures",DaoFactory.getPicturesDao());
+
         // String userID = request.getParameter("ad.userId");
 //        long id =Long.parseLong(userID);
 //        String UsernameID = DaoFactory.getUsersDao().findByUserId(id).getUsername();
