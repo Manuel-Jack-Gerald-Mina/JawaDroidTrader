@@ -18,12 +18,12 @@
 <jsp:include page="/WEB-INF/partials/navbar2.jsp" />
 
 <div class="container">
-<<<<<<< HEAD
+<%--<<<<<<< HEAD--%>
     <h1>Listing for all Ads!</h1>
-=======
+<%--=======--%>
     <c:if test="${ads.isEmpty()}"><h1>The list is empty...<br> Nothing in our database compares to your search</h1></c:if>
 
->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
+<%-->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7--%>
 
     <div class="row" >
         

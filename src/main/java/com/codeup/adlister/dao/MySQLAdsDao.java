@@ -216,11 +216,11 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-<<<<<<< HEAD
-// public List<Ad> searchThroughAds(String searchType, String TitleUserCategory){
-//
-// }
-=======
+//<<<<<<< HEAD
+//// public List<Ad> searchThroughAds(String searchType, String TitleUserCategory){
+////
+//// }
+//=======
     public List<Category> findAllCategories(long adId) {
         String query = "SELECT C.*, adsc.ads_id FROM categories AS C JOIN ads_categories AS adsc ON adsc.category_id = C.id WHERE ads_id IN (SELECT id FROM ads WHERE id = ?)";
         try {
@@ -267,7 +267,7 @@ public class MySQLAdsDao implements Ads {
         }
 
     }
->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
+//>>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
 
 }
 

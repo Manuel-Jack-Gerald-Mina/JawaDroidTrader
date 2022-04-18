@@ -11,14 +11,14 @@
     <link rel ="stylesheet" href="../CSS/style.css" >
     <link href="../asset/jawa_facial.png" rel="icon" type="image/x-icon" />
 
-<<<<<<< HEAD
-=======
+<%--<<<<<<< HEAD--%>
+<%--=======--%>
     <%--font google--%>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Codystar&family=Indie+Flower&family=Orbitron:wght@500&family=Rajdhani&display=swap" rel="stylesheet">
 
->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
+<%-->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7--%>
 
 </head>
 <body id="logIn">
@@ -28,11 +28,11 @@
         <h1 style="font-family: 'Orbitron', sans-serif">Please Log In</h1>
 
             <c:if test="${failed == '1'}">
-<<<<<<< HEAD
+<%--<<<<<<< HEAD--%>
                 <div> <p>incorrect username or password</p></div>
-=======
+<%--=======--%>
         <div style="font-family:'Codystar',cursive; color: red;font-size: 25px"> Incorrect username or password. Please try again.</div>
->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
+<%-->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7--%>
             </c:if>
         <form id= "loginForm" action="login" method="POST">
             <div class="form-group">

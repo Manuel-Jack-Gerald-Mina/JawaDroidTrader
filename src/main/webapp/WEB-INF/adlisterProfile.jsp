@@ -31,16 +31,16 @@
     <div class="row">
         <div class="card profile-card  justify-content-center align-items-center" id="card3">
             <img id = "profilePic" src="../asset/jawa.png" class="card-img-top" alt="...">
-=======
-<jsp:include page="/WEB-INF/partials/navbar.jsp" />
+<%--=======--%>
+<%--<jsp:include page="/WEB-INF/partials/navbar.jsp" />--%>
 
 
 
-<div class="container min-vh-100 d-flex justify-content-center align-items-center">
-    <div class="row ">
-        <div class="card profile-card  justify-content-center align-items-center">
-            <img id="profilePic" src="../../asset/${pictures.findByUserId(user_id.getId()).getUrl()}" class="card-img-top" alt="${pictures.findByUserId(user_id.getId()).getUrl()}" width="350" height="600">
->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
+<%--<div class="container min-vh-100 d-flex justify-content-center align-items-center">--%>
+<%--    <div class="row ">--%>
+<%--        <div class="card profile-card  justify-content-center align-items-center">--%>
+<%--            <img id="profilePic" src="../../asset/${pictures.findByUserId(user_id.getId()).getUrl()}" class="card-img-top" alt="${pictures.findByUserId(user_id.getId()).getUrl()}" width="350" height="600">--%>
+<%-->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7--%>
             <div class="card-body justify-content-center align-items-center">
               
                 <h5 class="card-title text-center">${user_id.getUsername()}</h5>

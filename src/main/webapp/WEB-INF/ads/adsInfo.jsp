@@ -56,7 +56,7 @@
                     </button>
                 </a>
             </ul>
-=======
+<%--=======--%>
     <div class="row">
         <div id="card-id" class="card justify-content-center align-items-center">
             <div class="card-img-top">
@@ -84,7 +84,7 @@
                     <input class="btn btn-warning btn-sm" type="submit" value="Edit">
                 </form>
             </c:if>
->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7
+<%-->>>>>>> cddc8e79f130828b316ad077206bc694da8354b7--%>
         </div>
     </div>
 </div>
