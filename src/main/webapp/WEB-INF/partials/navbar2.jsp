@@ -15,25 +15,12 @@
                     <option value="Username" class="search_input">User</option>
                     <option value="Category" class="search_input">Categories</option>
                 </select>
-                <input type="text" class="search_input" placeholder="Search">
+                <input type="text" class="search_input" name="search" placeholder="search" id="Search_box" rows="1"></input>
+<%--                <input type="text" class="search_input" placeholder="Search">--%>
                 <button type="submit" class="btn btn-outline-warning">Search</button>
             </div>
 
         </form>
-
-        <%--<form class="form-inline ">
-            <div class="dropdown ">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                    Search by...
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li class="dropdown-item" value="searchById">Search By ID</li>
-                    <li class="dropdown-item" value="searchByTitle">Search By Title</li>
-                </div>
-            </div>
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>--%>
 <c:choose>
         <c:when test="${sessionScope.user != null}">
         <ul class="nav navbar-nav navbar-right">

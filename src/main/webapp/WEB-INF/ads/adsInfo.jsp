@@ -23,37 +23,19 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar2.jsp"/>
 
-<%--<div class="container min-vh-100 d-flex justify-content-center align-items-center">--%>
-<%--    <div class="row">--%>
-<%--        <div id="card-id" class="card justify-content-center align-items-center">--%>
-<%--            <div class="card-img-top">--%>
-<%--                <img src="../../asset/Adsimg/droid.jpeg" class="  rounded mx-auto d-block" width="75%" height="auto">--%>
-<%--            </div>--%>
-<%--            <div>--%>
-<%--                <ul>--%>
-<%--                    <li><h5> Galactic Credits ${selectedAd.price}</h5></li>--%>
-<%--                    <li><a href="adlisterProfile?user=${selectedAd.userId}">--%>
-<%--                        <button class="btn-warning">View Trader</button>--%>
-<%--                    </a></li>--%>
-<%--                    <li><p class="card-text">Description : ${selectedAd.description}</p></li>--%>
-<%--                </ul>--%>
-<%--            </div>--%>
-<%--        </div>--%>
 
-<%--    </div>--%>
-<%--</div>--%>
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
 
     <div class="row">
-        <div id="card-id" class="card justify-content-center align-items-center">
-          <div id="card" data-tilt data-tilt-reverse="true" data-tilt-glare data-tilt-max-glare="0.4">  
+<%--        data-tilt data-tilt-reverse="true" data-tilt-glare data-tilt-max-glare="0.4"--%>
+<%--        <div id="card-id" class="card justify-content-center align-items-center">--%>
+          <div id="card" class="m-auto">
             <div class="card-img-top">
-                <img src="../../asset/${pictures.findByAdId(selectedAd.id)}" alt="${pictures.findByAdId(selectedAd.id)}" data-tilt data-tilt-reverse="true" data-tilt-glare data-tilt-max-glare="0.4" class="rounded mx-auto d-block" width="75%" height="auto">
+                <img src="../../asset/${pictures.findByAdId(selectedAd.id)}" alt="${pictures.findByAdId(selectedAd.id)}"  class="rounded mx-auto d-block" width="75%" height="auto">
             </div>
             <div>
-                <h1 class="text-center">${selectedAd.title}</h1>
+                <h2 class="text-center">${selectedAd.title}</h2>
                 <ul>
-
                     <li><h5> Price in Galactic Credits:      ${selectedAd.price}</h5></li>
                     <li><a href="adlisterProfile?user=${selectedAd.userId}">
                         <button class="btn-warning">View ${user.getUsername()}'s profile</button>
@@ -73,7 +55,7 @@
                 </form>
             </c:if>
         </div>
-    </div>
+<%--    </div>--%>
 </div>
 
 <script type="text/javascript" src="js/vanilla-tilt.js"></script>
