@@ -33,7 +33,7 @@
                    <a style="text-align: center" href="/profile/editpic" class="card-link"><h5>edit profile picture</h5></a>
 
                 <h5 id ="currentUser" class="card-title text-center">${sessionScope.user.username}</h5>
-                <p class="card-text d-flex justify-content-center align-items-center">Hi ! I'm <span>${sessionScope.user.username}</span>, and I'm from <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
+                <p class="card-text m-auto">Hi ! I'm <span>${sessionScope.user.username}</span>, and I'm from  <span id="origin"></span> , SandCrawler-Mos Eisley, Tatooine.</p>
 
             </div>
             <div class="card-body m-auto" id="userADList">
