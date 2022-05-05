@@ -26,7 +26,7 @@
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
     <div class="row ">
 
-        <div class="card profile-card  justify-content-center align-items-center" id="card3">
+        <div class="card profile-card m-auto" id="card3">
             <img src="../asset/${pic.findByUserId(sessionScope.user.id).getUrl()}" width="350" height="600" class="card-img-top" alt="...">
                <div> <h3 style="text-align: center">${sessionScope.user.email}</h3>
                    <a style="text-align: center" href="/changePassword" class="card-link"><h5>change password</h5></a>
